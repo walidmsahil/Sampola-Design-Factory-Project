@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Carousel from '@/components/Carousel'
 
 export default async function Home({ params }) {
   const { locale } = params; // 从 params 中解构 locale
@@ -20,7 +21,7 @@ export default async function Home({ params }) {
   const homepageData = await res.json();
 
   const banner = homepageData?.data?.attributes?.banner?.data?.attributes?.url;
-  const banners_slides = homepageData?.data?.attributes?.banners_slides?.data[0];
+  // const banners_slides = homepageData?.data?.attributes?.banners_slides?.data; // 获取所有 slides 数据
   const bannerCaption = homepageData?.data?.attributes?.banner?.data?.attributes?.caption;
   const title = homepageData?.data?.attributes?.title;
   const description = homepageData?.data?.attributes?.description;
@@ -36,6 +37,8 @@ export default async function Home({ params }) {
         <title>{title} - Sampola</title>
         <meta name="description" content={description} />
       </Head>
+      
+      {/* <Carousel slides={banners_slides} /> */}
 
       <div className="mt-14">
         <section className="bg-cover">

@@ -45,3 +45,24 @@ export async function getHTML(locale) {
     return null;
   }
 }
+
+// 获取 HTML 数据的 API 函数
+export async function getData(locale) {
+  console.log('getData', locale);
+  try {
+    // 发送 GET 请求，获取指定 locale 的 tester 数据
+    const res = await apiClient.get(
+      `/api/tester?fields[0]=html&locale=${locale}`
+    );
+    console.log('res', res);
+    
+    // 提取 CKEditor 字段的值
+    const ckEditorData = res.data.data?.attributes?.html || null;
+
+    // 返回 CKEditor 内容
+    return ckEditorData;
+  } catch (error) {
+    console.error('Error fetching HTML data:', error);
+    return null;
+  }
+}
