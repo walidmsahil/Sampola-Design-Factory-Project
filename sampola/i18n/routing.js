@@ -3,7 +3,7 @@ import {defineRouting} from 'next-intl/routing';
 import {createSharedPathnamesNavigation} from 'next-intl/navigation';
 
 export const routing = defineRouting({
-  locales: ['en', 'zh','fi','sv'],  // 定义支持的语言
+  locales: ['en','fi','sv'],  // 定义支持的语言
   defaultLocale: 'en'     // 默认语言
 });
 

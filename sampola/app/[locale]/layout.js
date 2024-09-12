@@ -26,11 +26,11 @@ export const metadata = {
 
 // 布局组件
 export default async function Layout({ children, params }) {
-  const locale = params.lang || 'en';
+  const locale = params.locale || 'en';
   const messages = await getMessages(locale);
 
   return (
-    <html lang={locale}>
+    <html locale={locale}>
       <body className="bg-[#f3f2e9]">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar params={params} />

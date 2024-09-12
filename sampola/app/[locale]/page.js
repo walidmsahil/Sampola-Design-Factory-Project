@@ -1,11 +1,11 @@
 import Head from 'next/head';
 
 export default async function Home({ params }) {
-  const { lang } = params; // 从 params 中解构 lang
+  const { locale } = params; // 从 params 中解构 locale
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   // 服务器端获取数据
-  const res = await fetch(`${apiUrl}/api/home-page?populate[banner]=*&populate[banners_slides]=*&locale=${lang}`, {
+  const res = await fetch(`${apiUrl}/api/home-page?populate[banner]=*&populate[banners_slides]=*&locale=${locale}`, {
     cache: 'no-store',
   });
 

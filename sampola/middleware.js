@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
 
 // 支持的语言和默认语言
-const SUPPORTED_LANGUAGES = ['en', 'zh', 'fi', 'sv'];
+const SUPPORTED_LANGUAGES = ['en', 'fi', 'sv'];
 const DEFAULT_LANGUAGE = 'en';
 
 export default function middleware(req) {
@@ -32,5 +32,5 @@ export default function middleware(req) {
 
 export const config = {
   // 仅匹配这些路径进行国际化处理
-  matcher: ['/', '/(en|zh|fi|sv)/:path*'], // 包含所有支持的语言
+  matcher: ['/', '/(en|fi|sv)/:path*'], // 包含所有支持的语言
 };

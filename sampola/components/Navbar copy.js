@@ -43,13 +43,13 @@ const MenuItem = ({ href, children, dropdownItems }) => {
 };
 
 export default function Navbar() {
-  const availableLocales = ['en', 'zh', 'fi', 'sv'];
+  const availableLocales = ['en', 'fi', 'sv'];
   const pathname = usePathname();
   const router = useRouter();
   const t = useTranslations('Navbar');
 
   // 动态获取当前语言
-  const locale = availableLocales.find(lang => pathname.includes(`/${lang}`)) || 'en';
+  const locale = availableLocales.find(locale => pathname.includes(`/${locale}`)) || 'en';
   const [selectedLocale, setSelectedLocale] = useState(locale);
 
   const handleLocaleChange = (e) => {
@@ -127,7 +127,6 @@ export default function Navbar() {
           <option value="en">English</option>
           <option value="fi">Suomi</option>
           <option value="sv">Svenska</option>
-          <option value="zh">中文</option>
         </select>
       </div>
     </nav>
