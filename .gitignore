@@ -15,6 +15,8 @@ yarn-debug.log*
 
 # Strapi
 # 如果有其他临时或构建目录可以列出来
+build
+my-strapi-project/build/
 
 # Next.js
 .next/
