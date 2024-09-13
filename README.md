@@ -1,5 +1,4 @@
 # Design Factory Project
-
 This project includes a Next.js frontend and a Strapi CMS backend. Please follow the steps below to run the project.
 
 ## Clone the project
@@ -10,6 +9,24 @@ First, clone the project from the GitHub repository to your local machine:
 git clone https://github.com/HaoZhangSid/Design-factory.git
 ```
 
+Please make sure your code is up to date with the latest master branch. After that, you can create your own branch. To do this, follow these steps:
+
+Make sure you're on the master branch:
+
+```bash
+git checkout master
+```
+Pull the latest changes:
+
+```bash
+git pull origin master
+```
+Create a new branch:
+
+```bash
+git checkout -b your-branch-name
+
+```
 
 ## Install dependencies
 
