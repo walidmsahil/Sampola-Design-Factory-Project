@@ -10,13 +10,11 @@ Icon
 .Trashes
 ._*
 
-
 ############################
 # Linux
 ############################
 
 *~
-
 
 ############################
 # Windows
@@ -30,7 +28,6 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-
 
 ############################
 # Packages
@@ -60,28 +57,24 @@ $RECYCLE.BIN/
 *.out
 *.pid
 
-
 ############################
 # Logs and databases
 ############################
 
 .tmp
 *.log
-*.sql
-*.sqlite
-*.sqlite3
-
+# *.sql
+# !.github/workflows/db/**/*.sql
+# *.sqlite
 
 ############################
 # Misc.
 ############################
 
 *#
-ssl
 .idea
 nbproject
-public/uploads/*
-!public/uploads/.gitkeep
+.eslintcache
 
 ############################
 # Node.js
@@ -92,24 +85,67 @@ lcov.info
 pids
 logs
 results
+build
 node_modules
 .node_history
+package-lock.json
+**/package-lock.json
+!docs/package-lock.json
+*.heapsnapshot
 
 ############################
 # Tests
 ############################
 
+test-apps
 coverage
+
+############################
+# Builds
+############################
+
+packages/generators/app/files/public/
+schema.graphql
+dist
+.nx
+.tsbuildinfo
+
+############################
+# Example app
+############################
+
+.dev
+# *.cache
+
+############################
+# Visual Studio Code
+############################
+
+.vscode/
+!.vscode/settings.json
+front-workspace.code-workspace
+.yarnrc
+
+############################
+# Yarn
+############################
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+############################
+# Playwright
+############################
+playwright-report
+test-results
+!tests/e2e/data/*.tar
+tests/e2e/.env
 
 ############################
 # Strapi
 ############################
-
-.env
-license.txt
-exports
-.strapi
-dist
-build
-.strapi-updater.json
-.strapi-cloud.json
+examples/**/types/generated
