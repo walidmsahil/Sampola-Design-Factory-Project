@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Logs
+logs
+*.log
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+.pnpm-debug.log*
+
+# Strapi
+# 如果有其他临时或构建目录可以列出来
+
+# Next.js
+.next/
+out/
+
+# Optional npm cache directory
+.npm/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git directories
+# 不应忽略 .git/ 和 .gitignore
