@@ -41,6 +41,7 @@ export default async function Home({ params }) {
       {/* <Carousel slides={banners_slides} /> */}
 
       <div className="mt-14">
+        <h1 className='text-center'>Home page</h1>
         <section className="bg-cover">
           <img src={`http://localhost:1337${banner}`} alt={bannerCaption || title} />
           <div className="text-center py-20">

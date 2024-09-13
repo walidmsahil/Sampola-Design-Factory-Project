@@ -15,8 +15,15 @@ yarn-debug.log*
 
 # Strapi
 # 如果有其他临时或构建目录可以列出来
-build
-my-strapi-project/build/
+# Strapi
+############################
+my-strapi-project/license.txt
+my-strapi-project/exports
+my-strapi-project/.strapi
+my-strapi-project/dist
+my-strapi-project/build
+my-strapi-project/.strapi-updater.json
+my-strapi-project/.strapi-cloud.json
 
 # Next.js
 .next/
@@ -36,6 +43,7 @@ out/
 # OS files
 .DS_Store
 Thumbs.db
+
 
 # Git directories
 # 不应忽略 .git/ 和 .gitignore

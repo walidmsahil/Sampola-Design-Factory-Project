@@ -40,7 +40,7 @@ const DesktopNavbar = ({ menuItems }) => {
             onMouseEnter={() => handleMouseEnter(index)}  // Open submenu on hover
             onMouseLeave={handleMouseLeave}               // Close submenu on leave
           >
-            <Link href={item.href} className={`p-2 ${activeClass} text-[#C0CFB2] hover:bg-[#F5F7EE] hover:text-[#151515] rounded-full transition flex items-center`}>
+            <Link href={item.href} className={`p-2 ${activeClass}  hover:bg-[#F5F7EE] hover:text-[#151515] rounded-full transition flex items-center`}>
               {item.label}
               {item.dropdownItems && item.dropdownItems.length > 0 && ( // 只有当有子菜单项时显示图标
                 <span className="ml-1">
