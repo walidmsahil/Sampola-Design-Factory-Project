@@ -1,134 +1,298 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { ChevronRight, Calendar, Users, Leaf, Heart } from 'lucide-react'
-
-export default function AboutPage() {
+'use client'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Image from "next/image"
+import Link from "next/link"
+import dynamic from "next/dynamic"
+import { Separator } from "@/components/ui/separator"
+// 动态导入 motion.div
+const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
+export default function Component() {
   return (
-    <div className="bg-green-light min-h-screen">
-      <header className="bg-green-dark text-white py-20 text-center">
-        <h1 className="text-4xl font-bold mb-4">关于Sampola</h1>
-        <p className="max-w-2xl mx-auto text-lg">
-        Sampola成立于1960年代，是一家致力于为有特殊需求人群提供就业机会和社会支持的非营利组织。我们通过工作机会、社区支持和环保项目，帮助个人融入社会，增强他们的自信心和生活的意义。作为一个社会责任企业，我们的目标是通过真实的工作与合作为社会创造积极的影响。
-        </p>
-      </header>
+      <div className="container mx-auto px-4 ">
+        <Separator className="my-10 h-[2px] bg-green justify-center w-full" />
+        {/* Tabs and Tab List */}
+        <Tabs defaultValue="sampola" className="mb-12">
+          <TabsList className="flex w-full justify-between bg-transparent flex-wrap">
+            <TabsTrigger value="sampola" className="md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark">
+              Our Mission
+            </TabsTrigger>
+            <Separator className="bg-[#becfc1]" orientation="vertical" />
+            <TabsTrigger value="services" className="md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark">
+              Core Services
+            </TabsTrigger>
+            <Separator className="bg-[#becfc1]" orientation="vertical" />
+            <TabsTrigger value="partners" className="md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark">
+              Partners
+            </TabsTrigger>
+            <Separator className="bg-[#becfc1]" orientation="vertical" />
+            <TabsTrigger value="impact" className="md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark">
+              Social Impact
+            </TabsTrigger>
+            <Separator className="bg-[#becfc1]" orientation="vertical" />
+            <TabsTrigger value="about" className="md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark">
+              About Us
+            </TabsTrigger>
+          </TabsList>
 
-      <main className="container mx-auto px-4 py-12">
-        <section className="mb-20">
-          <h2 className="text-center text-3xl font-bold mb-6 text-green-dark">我们的历史</h2>
-          <p className="mb-8 text-lg">
-          Sampola自成立以来，一直秉持着为残疾人和弱势群体创造就业机会的初衷。自1960年代以来，我们从一个小型社区项目发展到如今的一个有70名员工的工作中心。通过与企业和政府的紧密合作，我们在过去的几十年中帮助无数个体实现了自我价值，也为企业提供了高质量的外包服务。
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { year: 1960, event: 'Sampola工作中心成立，服务于当地社区的残疾人和弱势群体。' },
-              { year: 1990, event: 'Sampola扩大服务范围，与本地企业建立合作，为它们提供分拣和包装服务。' },
-              { year: 2020, event: 'Sampola成功启动环保项目，利用废旧广告材料生产环保产品，受到广泛好评。' },
-              { year: 2024, event: '我们继续致力于创新和发展，帮助更多企业和个人，实现更大的社会价值。' },
-            ].map((item, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <Calendar className="w-10 h-10 text-green-dark mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{item.year}</h3>
-                <p>{item.event}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+          {/* Mission and Vision Section with Transition */}
+          <TabsContent value="sampola" className="">
 
-        <section className="mb-20">
-          <h2 className="text-center text-3xl font-bold mb-6 text-green-dark">我们的愿景与使命</h2>
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-semibold mb-4">愿景</h3>
-            <p className="mb-6 text-lg">
-              创造一个包容的社会，在这里每个人都有平等的机会通过工作提升生活的质量。
-            </p>
-            <h3 className="text-2xl font-semibold mb-4">使命</h3>
-            <p className="text-lg">
-              为有特殊需求的人群提供支持，通过工作机会、培训和环保项目，帮助他们融入社会并实现自我价值。我们通过与企业和政府的紧密合作，推动社会责任项目的发展，同时为社会和环境做出积极贡献。
-            </p>
-          </div>
-        </section>
-
-        <section className="mb-20">
-          <h2 className="text-center text-3xl font-bold mb-6 text-green-dark">我们的核心价值观</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              { icon: Users, title: '个性化支持', description: '我们关注每个人的独特需求，提供个性化的工作支持和社区服务。' },
-              { icon: Heart, title: '社会责任', description: '作为一个非营利组织，我们努力通过每一项工作项目和合作提升社会责任感。' },
-              { icon: Leaf, title: '环保与可持续发展', description: '通过创新的循环利用项目，我们致力于为环保事业贡献力量。' },
-              { icon: ChevronRight, title: '承诺与信任', description: '我们坚持兑现承诺，确保所有合作伙伴和服务对象都能信任我们的服务质量和社会影响。' },
-            ].map((item, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md flex items-start">
-                <item.icon className="w-10 h-10 text-green-dark mr-4 flex-shrink-0" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-20">
-          <h2 className="text-center text-3xl font-bold mb-6 text-green-dark">我们的团队与合作伙伴</h2>
-          <p className="mb-8 text-lg">
-            Sampola由一支充满热情的团队领导，他们不仅在帮助有特殊需求人群方面有丰富的经验，也深知如何与企业和政府合作，推动社会责任项目的发展。
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {[
-              { name: '张三', role: '执行总监', image: '/images/photo_02.png' },
-              { name: '李四', role: '项目经理', image: '/images/photo_01.png' },
-              { name: '王五', role: '社区关系主管', image: '/images/photo_03.png' },
-            ].map((member, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
-                <Image src={member.image} alt={member.name} width={200} height={200} className="rounded-full mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                <p className="text-green-dark">{member.role}</p>
-              </div>
-            ))}
-          </div>
-          <h3 className="text-center text-3xl font-semibold mb-4">合作伙伴</h3>
-          <div className="flex flex-wrap justify-center gap-8">
-            {[{name:'Fiskars',img:'logo.svg'}, {name:'Hansaprint',img:'hansaprint.png'}, {name:'Tammer Brands',img:'tammer-brands-logo.png'}].map((partner, index) => (
-              <div key={index} className="bg-white p-4 rounded-lg shadow-md flex justify-center items-center">
-                <Image src={`/images/${partner.img}`} alt={partner.name} width={200} height={100} />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold mb-6 text-green-dark">成功故事</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">Sampola帮助残疾青年融入工作社区</h3>
-              <p>
-                小明是一位患有轻度自闭症的青年。通过Sampola的支持，他在我们的工作中心找到了一份包装工作。在这里，小明不仅学会了新的技能，还结识了许多朋友，大大提升了他的自信心和社交能力。
-              </p>
+            <div className="mb-16 bg-[#f3f2e9] p-6">
+              <MotionDiv
+                initial={{ opacity: 0, x: -20 }} // 初始状态
+                animate={{ opacity: 1, x: 0 }}    // 动画状态
+                exit={{ opacity: 0, x: 20 }}       // 退出状态
+                transition={{ duration: 0.4 }}     // 过渡时间
+              >
+                <Image
+                  src="/images/sampola_banner1.webp" // Placeholder image
+                  alt="Work and community support"
+                  width={1500}
+                  height={300}
+                  className="mb-4 rounded-lg"
+                />
+                <h2 className="text-3xl font-bold mb-4 text-green">Supporting Communities, Empowering Work</h2>
+                <p className="text-lg mb-4">
+                  Sampola is a non-profit organization committed to providing job opportunities and social support to people with special needs.
+                  Our vision is to create an inclusive society where everyone can improve their quality of life through meaningful work and gain social recognition and respect.
+                </p>
+                <p className="text-lg mb-4">
+                  Our mission is to create employment opportunities, provide training, and promote environmental projects to help people with disabilities and marginalized groups
+                  integrate into society and enhance their self-confidence. We collaborate with businesses and the government to advance social responsibility initiatives and foster sustainability.
+                </p>
+              </MotionDiv>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-semibold mb-4">与Fiskars合作推动环保包装项目</h3>
-              <p>
-                我们与Fiskars公司合作，为他们的园艺工具开发了一套环保包装解决方案。这个项目不仅为我们的员工创造了新的工作机会，还大大减少了包装材料的使用，获得了客户和环保组织的一致好评。
+
+          </TabsContent>
+
+          {/* Core Services Section with Transition */}
+          <TabsContent value="services" className="mb-16  bg-[#f3f2e9] p-6">
+            <MotionDiv
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Image
+                src="/images/sampola_banner3.webp" // Placeholder image
+                alt="Work and community support"
+                width={1500}
+                height={300}
+                className="mb-4 rounded-lg"
+              />
+              <h2 className="text-3xl font-bold mb-4 text-green">Empowering Communities through Work</h2>
+              <p className="text-lg mb-4">
+                At Sampola, we provide three primary services to support communities and individuals with special needs:
               </p>
-            </div>
-          </div>
+              <p className="text-lg mb-4">
+                <strong>Work and Community Support:</strong> We offer personalized job placement services, ensuring individuals with disabilities can find meaningful work suited to their abilities, improving their quality of life.
+              </p>
+              <p className="text-lg mb-4">
+                <strong>Recycling and Sustainability:</strong> Our recycling initiatives transform discarded materials into eco-friendly products, creating jobs and reducing environmental waste.
+              </p>
+              <p className="text-lg mb-4">
+                <strong>Business Outsourcing Services:</strong> We partner with businesses to provide cost-effective outsourcing services such as packaging, assembly, and more, helping companies fulfill their social responsibility commitments.
+              </p>
+            </MotionDiv>
+          </TabsContent>
+
+          {/* Partners Section with Transition */}
+          <TabsContent value="partners" className="mb-16  bg-[#f3f2e9] p-6">
+            <MotionDiv
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Image
+                src="/images/image20.png" // Placeholder image
+                alt="Work and community support"
+                width={1500}
+                height={300}
+                className="mb-4 rounded-lg"
+              />
+              <h2 className="text-3xl font-bold mb-4 text-green">Building a Better Future Together</h2>
+              <p className="text-lg mb-4">
+                Sampola works with a wide range of local and international partners who share our commitment to social responsibility and sustainability.
+                Together, we create meaningful work opportunities, foster social integration, and promote environmentally friendly practices.
+              </p>
+              <p className="text-lg mb-4">
+                Our partners come from various industries, helping us expand our impact by offering resources, collaborations, and support for our mission.
+                With their contributions, we are able to provide job opportunities for individuals in need while making a positive environmental impact.
+              </p>
+            </MotionDiv>
+          </TabsContent>
+
+          {/* Social Impact Section with Transition */}
+          <TabsContent value="impact" className="mb-16  bg-[#f3f2e9] p-6">
+            <MotionDiv
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Image
+                src="/images/image4.png" // Placeholder image
+                alt="Work and community support"
+                width={1500}
+                height={300}
+                className="mb-4 rounded-lg max-h-[482px] object-cover"
+              />
+              <h2 className="text-3xl font-bold mb-4 text-green">Making a Difference, One Life at a Time</h2>
+              <p className="text-lg mb-4">
+                At Sampola, we believe in the transformative power of work. Through our programs, we have helped hundreds of individuals with disabilities gain employment,
+                find a sense of purpose, and build confidence. Our recycling and sustainability projects further extend our impact by promoting environmental responsibility.
+              </p>
+              <p className="text-lg mb-4">
+                Our social impact can be seen in the lives we have changed and the communities we have supported. Every job opportunity we create and every product we recycle
+                brings us closer to a more inclusive and sustainable society.
+              </p>
+            </MotionDiv>
+          </TabsContent>
+
+          {/* About Us Section with Transition */}
+          <TabsContent value="about" className="mb-16  bg-[#f3f2e9] p-6">
+            <MotionDiv
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Image
+                src="/images/sampola_banner4.webp" // Placeholder image
+                alt="Work and community support"
+                width={1500}
+                height={300}
+                className="mb-4 rounded-lg"
+              />
+              <h2 className="text-3xl font-bold mb-4 text-green">Our Story and Vision</h2>
+              <p className="text-lg mb-4">
+                Sampola was founded in the 1960s with the goal of creating meaningful employment opportunities for individuals with disabilities and those in need of special support.
+                Over the decades, we have grown into a comprehensive organization that not only provides job opportunities but also promotes sustainability through various recycling initiatives.
+              </p>
+              <p className="text-lg mb-4">
+                Our vision is to create a world where work is accessible to everyone, and communities are built on the principles of inclusion and sustainability.
+                We strive to integrate individuals into the workforce, helping them lead fulfilling lives while contributing to a healthier planet.
+              </p>
+            </MotionDiv>
+          </TabsContent>
+        </Tabs>
+        
+        <Separator className="my-10 h-[2px] bg-green justify-center w-full" />
+        
+        {/* Core Services Section */}
+        <section className="grid md:grid-cols-2 gap-8 mb-16">
+          <Card className="border-0 shadow-none">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-green">Work and Community Support</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Image
+                src="/images/img1.webp" // Placeholder image
+                alt="Work and community support"
+                width={500}
+                height={300}
+                className="mb-4 rounded-lg"
+              />
+              <p className="mb-4">We provide job opportunities for individuals with special needs, helping them integrate into society through meaningful work that enhances their self-esteem and quality of life.</p>
+              {/* <Button variant="outline" className="border-green text-green hover:bg-green hover:text-white">Learn More</Button> */}
+            </CardContent>
+          </Card>
+          <Card className="border-0 shadow-none">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold text-green">Recycling and Sustainability</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Image
+                src="/images/img2.webp" // Placeholder image
+                alt="Recycling and sustainability"
+                width={500}
+                height={300}
+                className="mb-4 rounded-lg"
+              />
+              <p className="mb-4">Through our innovative recycling projects, we turn discarded advertising materials into environmentally friendly products, driving sustainable development.</p>
+              {/* <Button variant="outline" className="border-green text-green hover:bg-green hover:text-white">Explore Eco-Friendly Products</Button> */}
+            </CardContent>
+          </Card>
         </section>
 
-        <section className="text-center">
-          <h2 className="text-3xl font-bold mb-6 text-green-dark">想了解更多？</h2>
-          <p className="mb-8 text-lg">
-            想进一步了解Sampola的服务或合作机会？请随时联系我们，加入我们的社会责任事业，为残疾人群和弱势群体创造更多的就业机会，同时推动环保和可持续发展。
-          </p>
-          <div className="flex justify-center gap-4">
-            <Link href="/contact" className="bg-green-dark text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300">
-              联系我们
-            </Link>
-            <Link href="/services" className="bg-white text-green-dark px-6 py-3 rounded-lg border border-green-dark hover:bg-green-100 transition duration-300">
-              合作机会
-            </Link>
+        {/* FAQ Section */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold mb-8 text-green">Frequently Asked Questions</h2>
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1" className="border-b border-gray-200">
+              <AccordionTrigger className="text-lg font-semibold">What is Sampola's primary goal?</AccordionTrigger>
+              <AccordionContent>
+                Our primary goal is to create more job opportunities for individuals with disabilities and marginalized groups, while encouraging businesses to fulfill their social responsibilities.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2" className="border-b border-gray-200">
+              <AccordionTrigger className="text-lg font-semibold">What services does Sampola offer?</AccordionTrigger>
+              <AccordionContent>
+                Sampola offers work support, community services, recycling projects, and outsourcing services in collaboration with businesses.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3" className="border-b border-gray-200">
+              <AccordionTrigger className="text-lg font-semibold">How does Sampola promote sustainability?</AccordionTrigger>
+              <AccordionContent>
+                We promote sustainability by recycling materials and transforming them into eco-friendly products that support environmental sustainability.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+          {/* <Button className="mt-8 bg-green hover:bg-green text-white">Learn More</Button> */}
+        </section>
+
+        {/* Success Stories Section */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8">Sampola's Success Stories</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border-0 shadow-lg overflow-hidden">
+              <Image
+                src="https://dummyimage.com/400x250/cccccc/ffffff" // Placeholder image
+                alt="Success story 1"
+                width={400}
+                height={250}
+                className="w-full"
+              />
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Work Support in the Community</h3>
+                <p className="mb-4">With Sampola's help, many individuals with disabilities have found meaningful work, boosting their confidence and improving their lives.</p>
+                <Link href="#" className="text-green hover:underline">Read More</Link>
+              </CardContent>
+            </Card>
+            <Card className="border-0 shadow-lg overflow-hidden">
+              <Image
+                src="https://dummyimage.com/400x250/cccccc/ffffff" // Placeholder image
+                alt="Success story 2"
+                width={400}
+                height={250}
+                className="w-full"
+              />
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Success in Recycling Projects</h3>
+                <p className="mb-4">Sampola's recycling projects have transformed old advertising materials into eco-friendly products, earning praise from businesses and the community.</p>
+                <Link href="#" className="text-green hover:underline">Read More</Link>
+              </CardContent>
+            </Card>
+            <Card className="border-0 shadow-lg overflow-hidden">
+              <Image
+                src="https://dummyimage.com/400x250/cccccc/ffffff" // Placeholder image
+                alt="Success story 3"
+                width={400}
+                height={250}
+                className="w-full"
+              />
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-2">Outsourcing Services for Businesses</h3>
+                <p className="mb-4">Through partnerships with local businesses, Sampola provides high-quality outsourcing services that help companies save costs while meeting their social responsibility commitments.</p>
+                <Link href="#" className="text-green hover:underline">Read More</Link>
+              </CardContent>
+            </Card>
           </div>
         </section>
-      </main>
-    </div>
+      </div>
   )
 }
