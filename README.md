@@ -32,21 +32,26 @@ git checkout -b your-branch-name
 
 Frontend (Next.js)
 Navigate to the frontend project directory and install the dependencies:
-cd C:\Users\student\Desktop\Design-factory\sampola
+```bash
+cd sampola
 npm install
+```
 
 Backend (Strapi CMS)
 Navigate to the backend project directory and install the dependencies:
-cd C:\Users\student\Desktop\Design-factory\my-strapi-project
+```bash
+cd my-strapi-project
 npm install
-
+```
 
 ## Start the development servers
 Start the Strapi backend:
 Navigate to the my-strapi-project directory and run the following command to start Strapi:
+```
 npm run develop
-
-## The Strapi CMS admin panel will be running at http://localhost:1337/admin.
+```
+### The Strapi CMS admin panel will be running at:
+http://localhost:1337/admin
 
 Strapi login credentials:
 Username: admin@gmail.com
@@ -55,8 +60,9 @@ Password: Qwer1234.
 
 Start the Next.js frontend:
 Navigate to the sampola directory and run the following command to start the Next.js frontend:
+```
 npm run dev
-
+```
 
 The frontend will be running at http://localhost:3000/.
 
