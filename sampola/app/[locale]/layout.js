@@ -3,6 +3,8 @@ import { getMessages } from 'next-intl/server';      // 从服务端获取翻译
 import localFont from 'next/font/local';
 import "../globals.css"; // 引用全局样式
 import Navbar from '../../components/Navbar/Navbar'; // 引用导航栏
+import Footer from '@/components/MyFooter'
+
 import CookieConsentBanner from '../../components/CookieConsentBanner'; // 引用Cookie同意弹框
 
 // 定义字体并使用绝对路径从 public 目录引用字体文件
@@ -36,9 +38,8 @@ export default async function Layout({ children, params }) {
           <Navbar params={params} />
           <main>{children}</main>
           <CookieConsentBanner />
-          <footer className="text-center p-4 mt-8 border-t border-[#4a5c4d]">
-            <p className="text-[#4a5c4d]">&copy; 2024 Sampola</p>
-          </footer>
+          <Footer className="text-center p-4 mt-8 border-t border-[#4a5c4d]">
+          </Footer>
         </NextIntlClientProvider>
       </body>
     </html>

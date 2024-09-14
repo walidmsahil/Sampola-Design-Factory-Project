@@ -50,7 +50,7 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			},
   			green: {
-  				light: '#f3f2e9',
+  				light: '#AABB99',
   				DEFAULT: '#4a5c4d',
   				dark: '#45624E'
   			}
