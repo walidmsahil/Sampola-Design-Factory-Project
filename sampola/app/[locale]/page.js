@@ -1,67 +1,80 @@
-import Head from 'next/head';
-import Carousel from '@/components/Carousel'
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default async function Home({ params }) {
-  const { locale } = params; // 从 params 中解构 locale
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+//import Footer from '../../components/Footer';
+import HeroSection from '../../components/HeroSection';
 
-  // 服务器端获取数据
-  const res = await fetch(`${apiUrl}/api/home-page?populate[banner]=*&populate[banners_slides]=*&locale=${locale}`, {
-    cache: 'no-store',
-  });
-
-  if (!res.ok) {
-    return (
-      <div>
-        <h1>无法加载内容，请稍后重试。</h1>
-      </div>
-    );
-  }
-
-  const homepageData = await res.json();
-
-  const banner = homepageData?.data?.attributes?.banner?.data?.attributes?.url;
-  // const banners_slides = homepageData?.data?.attributes?.banners_slides?.data; // 获取所有 slides 数据
-  const bannerCaption = homepageData?.data?.attributes?.banner?.data?.attributes?.caption;
-  const title = homepageData?.data?.attributes?.title;
-  const description = homepageData?.data?.attributes?.description;
-
-  if (!banner || !title || !description) {
-    return <div>加载中...</div>;
-  }
+export default function Home({ params }) {
+  const { locale } = params;
 
   return (
-    <>
-      {/* 动态设置 SEO */}
-      <Head>
-        <title>{title} - Sampola</title>
-        <meta name="description" content={description} />
-      </Head>
-      
-      {/* <Carousel slides={banners_slides} /> */}
+    <div className="bg-[#F5F7EE] min-h-screen">
+      <main>
+        <HeroSection />
+        <div className="container mx-auto px-4">
+          <section className="large-placeholder my-16 flex justify-center">
+            <div className="bg-[#D9D9D9] h-64 w-3/4 rounded-lg shadow-md"></div>
+          </section>
 
-      <div className="mt-14">
-        <h1 className='text-center'>Home page</h1>
-        <section className="bg-cover">
-          <img src={`http://localhost:1337${banner}`} alt={bannerCaption || title} />
-          <div className="text-center py-20">
-            <h1 className="text-5xl font-bold text-[#4a5c4d] mb-4">{title}</h1>
-            <p className="text-lg text-[#4a5c4d] mb-8">{description}</p>
-            <a href="#about" className="bg-[#4a5c4d] text-white px-6 py-3 rounded-full hover:bg-white hover:text-[#4a5c4d] transition">
-              了解更多
-            </a>
-          </div>
-        </section>
-
-        <section id="about" className="py-20 bg-white text-center">
-          <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-[#4a5c4d] mb-6">关于我们</h2>
-            <p className="text-lg text-[#4a5c4d]">
-              Sampola 是一个专注于提供本地优质商品的在线平台，帮助社区建立更紧密的联系。
+          <section className="services-customers py-16 bg-white rounded-lg shadow-md mb-8">
+            <h2 className="text-3xl font-bold mb-8 text-[#45624E] text-center">Services for Customers</h2>
+            <p className="mb-8 text-[#151515] text-center px-8">
+              Sampola has promoted meaningful work and social responsibility since the 1960s. Today,
+              we provide services for individuals with communication needs and businesses requiring
+              outsourcing solutions. Our goal is to foster social inclusion and support
+              local communities. We serve 1800 monthly - today for the whole summer and its 3,5k.
             </p>
-          </div>
-        </section>
-      </div>
-    </>
+            <div className="flex justify-center">
+              <Link href={`/${locale}/services`} className="bg-[#45624E] text-white px-6 py-2 rounded-full hover:bg-[#3a4c3d] transition duration-300 shadow-md">
+                Online Store
+              </Link>
+            </div>
+          </section>
+
+          <section className="services-companies py-16 flex items-center bg-white rounded-lg shadow-md mb-8">
+            <div className="w-2/3 pr-8 pl-8">
+              <h2 className="text-3xl font-bold mb-8 text-[#45624E] text-center">Services for Companies</h2>
+              <p className="mb-8 text-[#151515] text-center">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Aliquam a eros dictum, malesuada sem at, faucibus elit. 
+                Morbi sed aliquet. Morbi feugiat nunc vel aliquet. Morbi feugiat
+                vehicula. Donec arcu elit, molestie in purus et, interdum mollis
+                augue. Sed euismod urna non quam feugiat odio volutpat eget.
+              </p>
+              <div className="flex justify-center">
+                <Link href={`/${locale}/services`} className="bg-[#45624E] text-white px-6 py-2 rounded-full hover:bg-[#3a4c3d] transition duration-300 shadow-md">
+                  Link
+                </Link>
+              </div>
+            </div>
+            <div className="w-1/3 pr-8">
+              <div className="bg-[#D9D9D9] h-64 w-full rounded-lg shadow-md"></div>
+            </div>
+          </section>
+
+          <section className="customer-stories py-16 flex items-center bg-white rounded-lg shadow-md mb-8">
+            <div className="w-2/3 pr-8 pl-8">
+              <h2 className="text-3xl font-bold mb-8 text-[#45624E] text-center">Customer Stories</h2>
+              <p className="mb-8 text-[#151515] text-center">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Aliquam a eros dictum, malesuada sem at, faucibus elit. 
+                Morbi sed aliquet. Morbi feugiat nunc vel aliquet. Morbi feugiat
+                vehicula. Donec arcu elit, molestie in purus et, interdum mollis
+                augue. Sed euismod urna non quam feugiat odio volutpat eget.
+              </p>
+              <div className="flex justify-center">
+                <Link href={`/${locale}/stories`} className="bg-[#45624E] text-white px-6 py-2 rounded-full hover:bg-[#3a4c3d] transition duration-300 shadow-md">
+                  Link
+                </Link>
+              </div>
+            </div>
+            <div className="w-1/3 pr-8">
+              <div className="bg-[#D9D9D9] h-64 w-full rounded-lg shadow-md"></div>
+            </div>
+          </section>
+        </div>
+      </main>
+      {/*<Footer />*/}
+    </div>
   );
 }
