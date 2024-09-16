@@ -6,6 +6,7 @@ import Link from "next/link"
 import dynamic from "next/dynamic"
 import { Separator } from "@/components/ui/separator"
 import Faq from '@/components/Faq'
+import Carousel from '@/components/Carousel/Carousel'
 // 动态导入 motion.div
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 export default function Component() {
@@ -53,7 +54,7 @@ export default function Component() {
               transition={{ duration: 0.4 }}     // 过渡时间
             >
               <Image
-                src="/images/sampola_banner1.webp" // Placeholder image
+                src="/images/about_banner (1).webp" // Placeholder image
                 alt="Work and community support"
                 width={1500}
                 height={300}
@@ -112,13 +113,14 @@ export default function Component() {
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.4 }}
           >
-            <Image
+            {/* <Image
               src="/images/image20.png" // Placeholder image
               alt="Work and community support"
               width={1500}
               height={300}
               className="mb-4 rounded-lg"
-            />
+            /> */}
+            <Carousel></Carousel>
             <h2 className="text-3xl font-bold mb-4 text-green">Building a Better Future Together</h2>
             <p className="text-lg mb-4">
               Sampola works with a wide range of local and international partners who share our commitment to social responsibility and sustainability.

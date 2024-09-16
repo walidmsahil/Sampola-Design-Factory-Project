@@ -40,7 +40,7 @@ export default function FAQSection() {
       <Accordion type="single" collapsible className="w-full">
         {faqItems.slice(0, visibleItems).map((item, index) => (
           <AccordionItem key={index} value={`item-${index + 1}`} className="border-b border-gray-200">
-            <AccordionTrigger className="text-lg font-semibold text-green">{item.question}</AccordionTrigger>
+            <AccordionTrigger className="text-lg font-semibold text-green text-left">{item.question}</AccordionTrigger>
             <AccordionContent>
               {item.answer}
             </AccordionContent>
@@ -49,7 +49,7 @@ export default function FAQSection() {
       </Accordion>
       {visibleItems < faqItems.length && (
         <div className="mt-8 text-center">
-          <Button onClick={loadMore} className="bg-green-dark hover:bg-green-light text-[#F5F7EE]">
+          <Button onClick={loadMore} className="bg-green-dark rounded-full hover:bg-green-light text-[#F5F7EE]">
             Load More
           </Button>
         </div>
