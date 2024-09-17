@@ -70,3 +70,5 @@ The frontend will be running at http://localhost:3000/.
 You can focus on the website's style and layout first and temporarily store the content information on the frontend. Once the content is finalized, we will translate it into multiple languages and then store it in the CMS. Finally, the frontend will use an API to fetch the content from the CMS.
 
 If you encounter any issues, feel free to ask in the group, or ChatGPT can help solve most of your questions.
+
+

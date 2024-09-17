@@ -39,7 +39,7 @@ export default function Component() {
           </TabsTrigger>
           <Separator className="bg-[#becfc1]" orientation="vertical" />
           <TabsTrigger value="about" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark hover:text-green-dark data-[state=active]:text-green-dark">
-            About Us
+            Our Story
           </TabsTrigger>
         </TabsList>
 

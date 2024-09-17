@@ -22,6 +22,7 @@ export default async function Navbar({ params: { locale } }) {
       <DesktopNavbar menuItems={menuItems} />  {/* 这里使用客户端组件 */}
 
       {/* 移动端菜单 */}
+      
       <MobileNavbar menuItems={menuItems} />  {/* 这里使用客户端组件 */}
 
       {/* 语言切换器 */}

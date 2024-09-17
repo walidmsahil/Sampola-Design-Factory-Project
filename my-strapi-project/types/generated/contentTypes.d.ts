@@ -892,7 +892,7 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   info: {
     singularName: 'navigation';
     pluralName: 'navigations';
-    displayName: 'Navigation';
+    displayName: 'Navigations';
     description: '';
   };
   options: {
@@ -905,18 +905,25 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     slug: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     parent: Attribute.Relation<
+      'api::navigation.navigation',
+      'manyToOne',
+      'api::navigation.navigation'
+    >;
+    children: Attribute.Relation<
       'api::navigation.navigation',
       'oneToMany',
       'api::navigation.navigation'

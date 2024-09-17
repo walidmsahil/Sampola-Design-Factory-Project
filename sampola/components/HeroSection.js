@@ -9,8 +9,8 @@ export default function HeroSection() {
   const locale = params.locale;
 
   return (
-    <div className="bg-[#F7EEEE]">
-      <div className="container mx-auto px-4">
+    <div className="">
+      <div className="w-full">
         <section className="hero">
           <Image 
             src="/images/sampola_banner1.webp" 
@@ -21,8 +21,8 @@ export default function HeroSection() {
             objectFit="cover"
           />
           <div className="text-center py-8">
-            <h1 className="text-4xl font-bold mb-4 text-[#45624E]">Welcome to Sampola</h1>
-            <p className="text-xl mb-8 text-[#45624E]">We offer local services and quality products</p>
+            <h1 className="text-5xl font-bold mb-4 text-[#45624E]">Welcome to Sampola</h1>
+            <p className="text-xl mb-8">We offer local services and quality products</p>
             <Link href={`/${locale}/about`} className="bg-[#45624E] text-white px-6 py-2 rounded-full hover:bg-[#3a4c3d] transition duration-300">
               Learn more
             </Link>
