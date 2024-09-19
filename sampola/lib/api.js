@@ -73,3 +73,20 @@ export async function getData(locale) {
     return null;
   }
 }
+
+
+
+// 获取 core_service_sections 数据的 API 函数
+export async function getCoreServiceSectionsData(locale) {
+  try {
+    // console.log('Fetching Core Service Sections with locale:', locale);
+    
+    // 从 core_service_sections 直接调取数据，指定语言和图片填充
+    const res = await apiClient.get(`/api/core-service-sections?populate=image&locale=${locale}`);
+    // 返回 core_service_sections 的数据
+    return res.data.data;
+  } catch (error) {
+    console.error('Error fetching core service sections data:', error);
+    return [];
+  }
+}

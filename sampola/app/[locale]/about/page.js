@@ -7,9 +7,23 @@ import dynamic from "next/dynamic"
 import { Separator } from "@/components/ui/separator"
 import Faq from '@/components/Faq'
 import Carousel from '@/components/Carousel/Carousel'
+import CoreServiceCard from '@/components/CoreServiceCard'
+import { getCoreServiceSectionsData } from '@/lib/api'; // 引入获取 API 数据的函数
+import { useEffect, useState } from 'react';
+
 // 动态导入 motion.div
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
-export default function Component() {
+export default function Component({ params: { locale } }) {
+  const [coreServices, setCoreServices] = useState([]);
+
+  // 使用 useEffect 获取数据
+  useEffect(() => {
+    async function fetchData() {
+      const services = await getCoreServiceSectionsData(locale); // 传递 locale 参数
+      setCoreServices(services); // 设置获取到的服务数据
+    }
+    fetchData();
+  }, [locale]); // 添加 locale 依赖
   return (
     <div className="container mx-auto px-4 ">
       <h1 className="text-5xl font-bold text-green mb-4 text-center p-6">About Us</h1>
@@ -44,7 +58,7 @@ export default function Component() {
         </TabsList>
 
         {/* Mission and Vision Section with Transition */}
-        <TabsContent value="sampola" className="mb-16  bg-[#f3f2e9] p-6">
+        <TabsContent value="sampola" className="  bg-[#f3f2e9] p-6">
 
           <div className="mb-16 bg-[#f3f2e9] ">
             <MotionDiv
@@ -193,70 +207,27 @@ export default function Component() {
         <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
       </div>
 
-      {/* Core Services Section */}
       <section className="mb-16">
-        <Card className="border-0 shadow-none overflow-hidden">
-          <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/2 py-6">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-green">Toimintamme vaikutus/Impact</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4">
-                  Asiakkaan osallisuuden vahvistamisen ja elämänlaadun paranemisen myötä saavutetut säästöt syrjäytymisestä aiheutuvista sosiaali- ja terveydenhuollon kustannuksista
-                  Kolmannen sektorin ja yritysmaailman välisen yhteistyön vahvistaminen
-                  Hyvinvointiyhteiskunnan tukeminen yritysyhteistyön kautta
-                </p>
-              </CardContent>
-            </div>
-            <div className="md:w-1/2 p-6 flex items-center justify-center">
-              <div className="relative w-96 h-96">
-                <Image
-                  src="/images/img1.webp"
-                  alt="Work and community support"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-2xl shadow-lg"
-                />
-              </div>
+        {coreServices.map((service, index) => (
+          <div key={index}>
+            <CoreServiceCard
+              title={service.attributes.title} // 获取 title
+              description={service.attributes.description} // 获取 description
+              // 拼接完整的图片 URL
+              imageSrc={`${process.env.NEXT_PUBLIC_API_URL}${service.attributes.image?.data?.attributes?.url || '/default-image.jpg'}`}
+              imageAlt={service.attributes.title} // 使用 title 作为 alt 文本
+            />
+            <div className="flex w-full justify-center">
+              <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
             </div>
           </div>
-        </Card>
-        <div className="flex w-full justify-center">
-          <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
-        </div>
-        <Card className="border-0 shadow-none overflow-hidden">
-          <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/2 p-6">
-              <CardHeader>
-                <CardTitle className="text-2xl font-bold text-green">Customer Stories</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a eros dictum, malesuada sem at, pulvinar est. Morbi congue non mi sed aliquam. Morbi finibus iaculis pulvinar. Duis egestas quam venenatis massa fermentum vehicula. Donec arcu nisl, molestie in mauris et, hendrerit mollis augue. Sed suscipit iaculis nisl, quis feugiat odio venenatis eget.
-                </p>
-              </CardContent>
-            </div>
-            <div className="md:w-1/2 p-6 flex items-center justify-center">
-              <div className="relative w-96 h-96">
-                <Image
-                  src="/images/img2.webp"
-                  alt="Work and community support"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-2xl shadow-lg"
-                />
-              </div>
-            </div>
-          </div>
-        </Card>
+        ))}
       </section>
-      <div className="flex w-full justify-center">
-        <Separator className="mb-20 h-[2px] w-[95%] bg-green justify-center " />
-      </div>
       {/* FAQ Section */}
       <Faq></Faq>
-
+      <div className="flex w-full justify-center">
+        <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
+      </div>
       {/* Success Stories Section */}
       <section>
         <h2 className="text-3xl font-bold mb-8 text-green-dark">Sampola's Success Stories</h2>

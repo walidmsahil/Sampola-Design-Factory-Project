@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';  // 引入 usePathname 来获取当前路径
 
 const DesktopNavbar = ({ menuItems }) => {
-  console.log('DesktopNavbar', menuItems);
+  // console.log('DesktopNavbar', menuItems);
   
   const [openIndex, setOpenIndex] = useState(null);
 

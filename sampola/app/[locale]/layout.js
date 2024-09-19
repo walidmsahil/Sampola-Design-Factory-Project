@@ -36,7 +36,7 @@ export default async function Layout({ children, params }) {
       <body className="bg-[#f3f2e9]">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar params={params} />
-          <ClientLayout>
+          <ClientLayout locale={locale}>
             <main>{children}</main>
           </ClientLayout>
           <CookieConsentBanner />

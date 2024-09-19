@@ -3,7 +3,7 @@ import MobileNavbar from './MobileNavbar';   // 客户端组件
 import Link from 'next/link';
 import { getNavData } from '../../lib/api';
 import LanguageSwitcher from './LanguageSwitcher'; // 引入新的客户端组件语言切换器组件
-
+import FontSizeSwitcher from './FontSizeSwitcher';  // 引入新的客户端组件字体大小切换器组件
 export default async function Navbar({ params: { locale } }) {
   const availableLocales = ['en', 'fi', 'sv'];
   const currentLocale = availableLocales.includes(locale) ? locale : 'en'; // 动态获取 URL 中的语言参数
@@ -29,6 +29,8 @@ export default async function Navbar({ params: { locale } }) {
       <div className="ml-auto hidden lg:block">
         <LanguageSwitcher currentLocale={currentLocale} availableLocales={availableLocales} /> {/* 这里使用客户端组件 */}
       </div>
+
+      <FontSizeSwitcher />
     </nav>
   );
 }
