@@ -17,7 +17,13 @@ yarn-debug.log*
 # 如果有其他临时或构建目录可以列出来
 # Strapi
 ############################
-
+my-strapi-project/license.txt
+my-strapi-project/exports
+my-strapi-project/.strapi
+my-strapi-project/dist
+my-strapi-project/build
+my-strapi-project/.strapi-updater.json
+my-strapi-project/.strapi-cloud.json
 
 # Next.js
 .next/
