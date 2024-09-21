@@ -1,33 +1,40 @@
-"use client"; // 标记为客户端组件
+"use client";
 
 import { useRouter, usePathname } from 'next/navigation';
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { Globe } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function LanguageSwitcher({ currentLocale, availableLocales }) {
   const router = useRouter();
-  const pathname = usePathname(); // 获取当前路径
+  const pathname = usePathname();
 
-  const handleLocaleChange = (e) => {
-    const newLocale = e.target.value;
-
-    // 替换当前路径中的语言部分，并保持其余路径
+  const handleLocaleChange = (locale) => {
     const newPath = pathname.startsWith(`/${currentLocale}`)
-      ? pathname.replace(`/${currentLocale}`, `/${newLocale}`)
-      : `/${newLocale}${pathname}`;
-
-    router.push(newPath); // 跳转到新语言的相同页面
+      ? pathname.replace(`/${currentLocale}`, `/${locale}`)
+      : `/${locale}${pathname}`;
+    router.push(newPath);
   };
 
   return (
-    <select
-      value={currentLocale}
-      onChange={handleLocaleChange}
-      className="p-2 bg-[#45624E] text-white rounded-full"
-    >
-      {availableLocales.map(locale => (
-        <option key={locale} value={locale}>
-          {locale === 'en' ? 'English' : locale === 'fi' ? 'Suomi' : locale === 'sv' ? 'Svenska' : '中文'}
-        </option>
-      ))}
-    </select>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="w-12 h-12 p-2 flex items-center gap-2 hover:bg-green-light rounded-full bg-green-dark focus-visible:ring-0">
+          <Globe className="w-6 h-6 text-[#f3f2e9] focus:outline-none" />
+          <span className="sr-only">Select Language</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="bg-green-dark text-white rounded-lg">
+        {availableLocales.map((locale) => (
+          <DropdownMenuItem
+            key={locale}
+            onSelect={() => handleLocaleChange(locale)}
+            className="cursor-pointer"
+          >
+            {locale === 'en' ? 'English' : locale === 'fi' ? 'Suomi' : locale === 'sv' ? 'Svenska' : '中文'}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

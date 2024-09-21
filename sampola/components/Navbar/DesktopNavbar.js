@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';  // 引入 usePathname 来获取当前路径
 
 const DesktopNavbar = ({ menuItems }) => {
+  // console.log('DesktopNavbar', menuItems);
+  
   const [openIndex, setOpenIndex] = useState(null);
 
   // Handle opening submenu on hover
@@ -22,7 +24,7 @@ const DesktopNavbar = ({ menuItems }) => {
   // Determine if the link is active
   const isActive = (href, label) => {
     // If it's the home page, only highlight the home link (assuming home link is '/')
-    if (isHomePage && label === 'Home') {
+    if (isHomePage && (label === 'Home'|| label === 'Etusivu' || label === 'Hem')) {
       return true;
     }
     // For other links, check if pathname matches the href
@@ -30,7 +32,7 @@ const DesktopNavbar = ({ menuItems }) => {
   };
 
   return (
-    <div className="hidden lg:flex bg-[#45624E] space-x-6 rounded-full h-14 items-center p-4 min-w-fit">
+    <div className="hidden lg:flex bg-[#45624E] space-x-6 rounded-full h-14 items-center p-4 min-w-fit uppercase">
       {menuItems.map((item, index) => {
         const activeClass = isActive(item.href, item.label) ? 'bg-[#F5F7EE] text-[#151515]' : 'text-[#C0CFB2]';
         return (
@@ -54,7 +56,7 @@ const DesktopNavbar = ({ menuItems }) => {
                 <ul className="flex flex-col space-y-2 p-2 whitespace-nowrap">
                   {item.dropdownItems.map((subItem, subIndex) => (
                     <li key={subIndex}>
-                      <Link href={subItem.href} className="block px-4 py-2 text-sm text-[#C0CFB2] hover:bg-[#F5F7EE] hover:text-[#151515] rounded-md transition">
+                      <Link href={subItem.href} className={` block px-4 py-2 text-sm  hover:bg-[#F5F7EE] hover:text-[#151515] rounded-md transition ${isActive(subItem.href, subItem.label) ? 'bg-[#F5F7EE] text-[#151515]' : 'text-[#C0CFB2]'}`}>
                         {subItem.label}
                       </Link>
                     </li>

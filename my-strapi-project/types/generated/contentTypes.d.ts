@@ -793,16 +793,18 @@ export interface ApiAboutAbout extends Schema.SingleType {
   info: {
     singularName: 'about';
     pluralName: 'abouts';
-    displayName: 'About';
+    displayName: 'AboutPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    team_imgs: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    partners_imgs: Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
+    Title: Attribute.String;
+    core_service_sections: Attribute.Relation<
+      'api::about.about',
+      'oneToMany',
+      'api::core-service-section.core-service-section'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -819,6 +821,65 @@ export interface ApiAboutAbout extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface ApiCoreServiceSectionCoreServiceSection
+  extends Schema.CollectionType {
+  collectionName: 'core_service_sections';
+  info: {
+    singularName: 'core-service-section';
+    pluralName: 'core-service-sections';
+    displayName: 'CoreServiceSection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::core-service-section.core-service-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::core-service-section.core-service-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::core-service-section.core-service-section',
+      'oneToMany',
+      'api::core-service-section.core-service-section'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -892,7 +953,7 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   info: {
     singularName: 'navigation';
     pluralName: 'navigations';
-    displayName: 'Navigation';
+    displayName: 'Navigations';
     description: '';
   };
   options: {
@@ -905,18 +966,25 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     slug: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     parent: Attribute.Relation<
+      'api::navigation.navigation',
+      'manyToOne',
+      'api::navigation.navigation'
+    >;
+    children: Attribute.Relation<
       'api::navigation.navigation',
       'oneToMany',
       'api::navigation.navigation'
@@ -964,6 +1032,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
+      'api::core-service-section.core-service-section': ApiCoreServiceSectionCoreServiceSection;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::navigation.navigation': ApiNavigationNavigation;
     }

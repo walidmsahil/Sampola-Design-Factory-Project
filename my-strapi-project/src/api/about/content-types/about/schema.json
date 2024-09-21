@@ -4,32 +4,21 @@
   "info": {
     "singularName": "about",
     "pluralName": "abouts",
-    "displayName": "About"
+    "displayName": "AboutPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "team_imgs": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+    "Title": {
+      "type": "string"
     },
-    "partners_imgs": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
+    "core_service_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::core-service-section.core-service-section"
     }
   }
 }

@@ -134,4 +134,67 @@ h1 {
   body {
     @apply bg-background text-foreground;
   }
+  /* 定义全局字体大小变量 */
+  :root {
+    --font-size: 16px; /* 默认全局字体大小 */
+  }
+
+  /* 使用这些自定义变量为全局字体大小 */
+  body {
+    font-size: var(--font-size);
+  }
+
+  /* 定义基于字体大小变量的所有Tailwind尺寸 */
+  .text-xs {
+    font-size: calc(var(--font-size) * 0.75) !important; /* 比例为 0.75 */
+  }
+
+  .text-sm {
+    font-size: calc(var(--font-size) * 0.875) !important; /* 比例为 0.875 */
+  }
+
+  .text-base {
+    font-size: var(--font-size) !important; /* 基准字体 */
+  }
+
+  .text-lg {
+    font-size: calc(var(--font-size) * 1.125) !important; /* 比例为 1.125 */
+    line-height: calc(var(--font-size) * 1.75) !important;
+  }
+
+  .text-xl {
+    font-size: calc(var(--font-size) * 1.25) !important; /* 比例为 1.25 */
+  }
+
+  .text-2xl {
+    font-size: calc(var(--font-size) * 1.5) !important; /* 比例为 1.5 */
+  }
+
+  .text-3xl {
+    font-size: calc(var(--font-size) * 1.875) !important; /* 比例为 1.875 */
+  }
+
+  .text-4xl {
+    font-size: calc(var(--font-size) * 2.25) !important; /* 比例为 2.25 */
+  }
+
+  .text-5xl {
+    font-size: calc(var(--font-size) * 3) !important; /* 比例为 3 */
+  }
+
+  .text-6xl {
+    font-size: calc(var(--font-size) * 3.75) !important; /* 比例为 3.75 */
+  }
+
+  .text-7xl {
+    font-size: calc(var(--font-size) * 4.5) !important; /* 比例为 4.5 */
+  }
+
+  .text-8xl {
+    font-size: calc(var(--font-size) * 6) !important; /* 比例为 6 */
+  }
+
+  .text-9xl {
+    font-size: calc(var(--font-size) * 8) !important; /* 比例为 8 */
+  }
 }
