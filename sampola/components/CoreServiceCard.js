@@ -19,7 +19,7 @@ export default function CoreServiceCard({ title, description, imageSrc, imageAlt
         </div>
         
         {/* Image */}
-        <div className="md:w-1/2 p-6 flex items-center justify-center">
+        <div className="md:w-1/2 p-6 flex items-center justify-center -z-10">
           <div className="relative w-96 h-96">
             <Image
               src={imageSrc}

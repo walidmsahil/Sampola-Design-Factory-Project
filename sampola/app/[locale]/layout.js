@@ -35,6 +35,7 @@ export default async function Layout({ children, params }) {
     <html locale={locale}>
       <body className="bg-[#f3f2e9]">
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <div className='w-full h-8 bg-[#151515]' ></div>
           <Navbar params={params} />
           <ClientLayout locale={locale}>
             <main>{children}</main>

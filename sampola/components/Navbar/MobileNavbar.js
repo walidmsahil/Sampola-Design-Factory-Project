@@ -13,10 +13,10 @@ const MobileNavbar = ({ menuItems }) => {
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         className="absolute focus:outline-none right-4 top-4 transition-transform duration-300 ease-in-out"
       >
-        <Menu className="w-8 h-8 text-[#4a5c4d] transform rotate-0 transition-transform duration-300 ease-in-out" />
+        <Menu className="w-10 h-10 text-[#f3f2e9] transform rotate-0 transition-transform duration-300 ease-in-out" />
       </button>
       <div
-        className={`fixed top-0 left-0 w-full min-h-screen bg-[#45624E] p-8 flex flex-col space-y-4 transform transition-all duration-300 ease-in-out
+        className={`z-10 fixed top-0 left-0 w-full min-h-screen bg-[#45624E] p-8 flex flex-col space-y-4 transform transition-all duration-300 ease-in-out
             ${mobileMenuOpen ? 'translate-y-0 opacity-1' : 'translate-y-full opacity-0'}`}
       >
 

@@ -32,7 +32,7 @@ const DesktopNavbar = ({ menuItems }) => {
   };
 
   return (
-    <div className="hidden lg:flex bg-[#45624E] space-x-6 rounded-full h-14 items-center p-4 min-w-fit">
+    <div className="hidden lg:flex bg-[#45624E] space-x-6 rounded-full h-14 items-center p-4 min-w-fit uppercase">
       {menuItems.map((item, index) => {
         const activeClass = isActive(item.href, item.label) ? 'bg-[#F5F7EE] text-[#151515]' : 'text-[#C0CFB2]';
         return (

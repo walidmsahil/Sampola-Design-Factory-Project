@@ -31,7 +31,7 @@ export default function Component({ params: { locale } }) {
         <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
       </div>
       {/* Tabs and Tab List */}
-      <Tabs defaultValue="sampola" className="mb-12">
+      <Tabs defaultValue="sampola">
         <TabsList className="flex w-full justify-between bg-transparent flex-wrap">
           <TabsTrigger
             value="sampola"
@@ -60,7 +60,7 @@ export default function Component({ params: { locale } }) {
         {/* Mission and Vision Section with Transition */}
         <TabsContent value="sampola" className="  bg-[#f3f2e9] p-6">
 
-          <div className="mb-16 bg-[#f3f2e9] ">
+          <div className="mb-8 bg-[#f3f2e9] ">
             <MotionDiv
               initial={{ opacity: 0, x: -20 }} // 初始状态
               animate={{ opacity: 1, x: 0 }}    // 动画状态
@@ -74,6 +74,7 @@ export default function Component({ params: { locale } }) {
                 height={300}
                 className="mb-4 rounded-lg"
               />
+              
               <h2 className="text-3xl font-bold mb-4 text-green">Supporting Communities, Empowering Work</h2>
               <p className="text-lg mb-4">
                 Sampola is a non-profit organization committed to providing job opportunities and social support to people with special needs.
