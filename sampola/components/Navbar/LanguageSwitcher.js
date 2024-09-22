@@ -19,8 +19,8 @@ export default function LanguageSwitcher({ currentLocale, availableLocales }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="w-12 h-12 p-2 flex items-center gap-2 hover:bg-green-light rounded-full bg-green-dark focus-visible:ring-0">
-          <Globe className="w-6 h-6 text-[#f3f2e9] focus:outline-none" />
+        <Button variant="ghost" className="w-12 h-12 p-2 flex items-center gap-2 text-[#f3f2e9] hover:bg-[#f3f2e9] hover:text-green rounded-full bg-green-dark focus-visible:ring-0">
+          <Globe className="w-6 h-6  focus:outline-none" />
           <span className="sr-only">Select Language</span>
         </Button>
       </DropdownMenuTrigger>

@@ -35,8 +35,8 @@ const FontSizeSwitcher = () => {
     <div className="-translate-x-16 lg:translate-x-0 transition-transform">
       <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="w-12 h-12 p-2 flex items-center gap-2 hover:bg-green-light rounded-full bg-green-dark focus-visible:ring-0">
-          <ALargeSmall className="w-6 h-6 text-[#f3f2e9]" /> {/* 替换为 a-large-small 图标 */}
+        <Button variant="ghost" className="w-10 h-10 p-2 flex items-center gap-2 text-[#f3f2e9] hover:bg-[#f3f2e9] hover:text-green rounded-full bg-green-dark focus-visible:ring-0">
+          <ALargeSmall className="w-6 h-6 " /> {/* 替换为 a-large-small 图标 */}
           <span className="sr-only">Adjust Font Size</span>
         </Button>
       </DropdownMenuTrigger>

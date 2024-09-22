@@ -989,6 +989,19 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
       'oneToMany',
       'api::navigation.navigation'
     >;
+    order: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1010,6 +1023,28 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
       'api::navigation.navigation'
     >;
     locale: Attribute.String;
+  };
+}
+
+export interface ApiTestTest extends Schema.CollectionType {
+  collectionName: 'tests';
+  info: {
+    singularName: 'test';
+    pluralName: 'tests';
+    displayName: 'test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
   };
 }
 
@@ -1035,6 +1070,7 @@ declare module '@strapi/types' {
       'api::core-service-section.core-service-section': ApiCoreServiceSectionCoreServiceSection;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::test.test': ApiTestTest;
     }
   }
 }

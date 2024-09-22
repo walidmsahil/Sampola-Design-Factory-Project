@@ -212,6 +212,7 @@ export default function Component({ params: { locale } }) {
         {coreServices.map((service, index) => (
           <div key={index}>
             <CoreServiceCard
+              imgLeft={index % 2 === 0} // 根据索引值判断图片位置
               title={service.attributes.title} // 获取 title
               description={service.attributes.description} // 获取 description
               // 拼接完整的图片 URL

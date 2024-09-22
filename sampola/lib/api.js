@@ -11,26 +11,37 @@ export async function getNavData(locale) {
     // 使用 filters 过滤掉所有有 parent 的导航项，并填充 children
     const res = await apiClient.get(`/api/navigations?filters[parent][$null]=true&populate=children&locale=${locale}`);
     const navData = res.data.data;
-    
-    return navData.map((item) => ({
-      href: `/${locale}/${item.attributes.slug || ''}`,  // 处理可能的空 slug
-      label: item.attributes.title || 'Unnamed',        // 处理可能的空 title
-      dropdownItems: (item.attributes.children && item.attributes.children.data.length > 0) 
-        ? item.attributes.children.data.map((child) => ({
-          href: `/${locale}/${item.attributes.slug}/${child.attributes.slug || ''}`, // 处理子菜单的 slug
-          label: child.attributes.title || 'Unnamed',      // 处理子菜单的 title
-        }))
-        : [],  // 如果没有 children，则返回空数组
+
+    // 对主导航项进行排序
+    const sortedNavData = navData
+      .map((item) => ({
+        href: `/${locale}/${item.attributes.slug || ''}`,  // 处理可能的空 slug
+        label: item.attributes.title || 'Unnamed',        // 处理可能的空 title
+        order: item.attributes.order || 0,                // 处理可能的空 order
+        dropdownItems: (item.attributes.children && item.attributes.children.data.length > 0)
+          ? item.attributes.children.data.map((child) => ({
+              href: `/${locale}/${item.attributes.slug}/${child.attributes.slug || ''}`, // 处理子菜单的 slug
+              label: child.attributes.title || 'Unnamed',      // 处理子菜单的 title
+              order: child.attributes.order || 0,              // 处理子菜单的 order
+            }))
+          : [],  // 如果没有 children，则返回空数组
+      }))
+      .sort((a, b) => a.order - b.order);  // 按 order 字段排序
+
+    // 对子导航项（dropdownItems）进行排序，并且移除 order 字段
+    return sortedNavData.map((item) => ({
+      href: item.href,
+      label: item.label,
+      dropdownItems: item.dropdownItems
+        .sort((a, b) => a.order - b.order)  // 对 dropdownItems 按 order 排序
+        .map(({ order, ...rest }) => rest), // 删除 order 字段
     }));
+
   } catch (error) {
     console.error('Error fetching navigation data:', error);
     return [];
   }
 }
-
-
-
-
 
 // 获取 HTML 数据的 API 函数
 export async function getHTML(locale) {

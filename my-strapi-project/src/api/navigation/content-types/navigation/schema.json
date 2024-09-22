@@ -36,15 +36,26 @@
     },
     "parent": {
       "type": "relation",
-      "relation": "manyToOne", 
+      "relation": "manyToOne",
       "target": "api::navigation.navigation",
-      "inversedBy": "children"   
+      "inversedBy": "children"
     },
     "children": {
       "type": "relation",
-      "relation": "oneToMany", 
+      "relation": "oneToMany",
       "target": "api::navigation.navigation",
-      "mappedBy": "parent"      
+      "mappedBy": "parent"
+    },
+    "order": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer",
+      "unique": false,
+      "required": true,
+      "min": 0
     }
   }
 }
