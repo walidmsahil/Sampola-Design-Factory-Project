@@ -3,6 +3,7 @@ import MobileNavbar from './MobileNavbar';   // 客户端组件
 import { getNavData } from '../../lib/api';
 import LanguageSwitcher from './LanguageSwitcher'; // 引入新的客户端组件语言切换器组件
 import FontSizeSwitcher from './FontSizeSwitcher';  // 引入新的客户端组件字体大小切换器组件
+import { ThemeToggle } from "@/components/theme-toggle";  // 引入新的客户端组件主题切换器组件
 // import SearchBar from '../SearchBar';  // 引入新的客户端组件搜索栏组件
 export default async function Navbar({ params: { locale } }) {
   const availableLocales = ['en', 'fi', 'sv'];
@@ -21,7 +22,7 @@ export default async function Navbar({ params: { locale } }) {
             <div className="ml-auto hidden lg:flex items-center  rounded-full bg-green h-16 space-x-4 mr-4 p-4">
               <FontSizeSwitcher />
               <LanguageSwitcher currentLocale={currentLocale} availableLocales={availableLocales} />
-              <FontSizeSwitcher />
+              <ThemeToggle />
             </div>
           </div>
         </div>

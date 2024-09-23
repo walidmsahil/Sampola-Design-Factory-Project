@@ -8,7 +8,7 @@ export default function Home({ params }) {
   const { locale } = params;
 
   return (
-    <div className="bg-[#F5F7EE] min-h-screen">
+    <div className=" min-h-screen">
       <main>
         <HeroSection />
         <div className="container mx-auto px-4 lg:px-8">

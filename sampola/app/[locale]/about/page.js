@@ -58,9 +58,9 @@ export default function Component({ params: { locale } }) {
         </TabsList>
 
         {/* Mission and Vision Section with Transition */}
-        <TabsContent value="sampola" className="  bg-[#f3f2e9] p-6">
+        <TabsContent value="sampola" className="   p-6">
 
-          <div className="mb-8 bg-[#f3f2e9] ">
+          <div className="mb-8  ">
             <MotionDiv
               initial={{ opacity: 0, x: -20 }} // 初始状态
               animate={{ opacity: 1, x: 0 }}    // 动画状态
@@ -90,7 +90,7 @@ export default function Component({ params: { locale } }) {
         </TabsContent>
 
         {/* Core Services Section with Transition */}
-        <TabsContent value="services" className="mb-16  bg-[#f3f2e9] p-6">
+        <TabsContent value="services" className="mb-16   p-6">
           <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -121,7 +121,7 @@ export default function Component({ params: { locale } }) {
         </TabsContent>
 
         {/* Partners Section with Transition */}
-        <TabsContent value="partners" className="mb-16  bg-[#f3f2e9] p-6">
+        <TabsContent value="partners" className="mb-16   p-6">
           <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -149,7 +149,7 @@ export default function Component({ params: { locale } }) {
         </TabsContent>
 
         {/* Social Impact Section with Transition */}
-        <TabsContent value="impact" className="mb-16  bg-[#f3f2e9] p-6">
+        <TabsContent value="impact" className="mb-16   p-6">
           <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -176,7 +176,7 @@ export default function Component({ params: { locale } }) {
         </TabsContent>
 
         {/* About Us Section with Transition */}
-        <TabsContent value="about" className="mb-16  bg-[#f3f2e9] p-6">
+        <TabsContent value="about" className="mb-16   p-6">
           <MotionDiv
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
