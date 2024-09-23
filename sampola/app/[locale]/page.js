@@ -9,7 +9,6 @@ export default function Home({ params }) {
 
   return (
     <div className=" min-h-screen">
-      <main>
         <HeroSection />
         <div className="container mx-auto px-4 lg:px-8">
           {/* Large Placeholder Section */}
@@ -102,7 +101,6 @@ export default function Home({ params }) {
             </div>
           </section>
         </div>
-      </main>
     </div>
   );
 }

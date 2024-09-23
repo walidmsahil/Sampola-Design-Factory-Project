@@ -1,56 +1,47 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu';
-import { ALargeSmall } from 'lucide-react';  // 假设 a-large-small 图标名是 Asterisk，替换为实际图标
+import { ALargeSmall } from 'lucide-react';  // 替换为实际的图标组件
 import { Button } from '@/components/ui/button';
 
 const FontSizeSwitcher = () => {
-  const [fontSize, setFontSize] = useState('16px');
+  const fontSizes = ['18px', '22px', '16px']; // 预设的字体大小：正常、大号、小号
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const iconSizes = [ 'w-6 h-6','w-8 h-8', 'w-5 h-5'];
 
   useEffect(() => {
     // 从 localStorage 获取用户设置的字体大小
-    const savedFontSize = localStorage.getItem('fontSize') || '16px';
-    document.documentElement.style.setProperty('--font-size', savedFontSize);
-    setFontSize(savedFontSize);
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+      const index = fontSizes.indexOf(savedFontSize);
+      if (index !== -1) {
+        setCurrentIndex(index);
+        document.documentElement.style.setProperty('--font-size', savedFontSize);
+      }
+    } else {
+      // 设置默认字体大小
+      document.documentElement.style.setProperty('--font-size', fontSizes[0]);
+    }
   }, []);
 
-  const setNewFontSize = (newSize) => {
+  const toggleFontSize = () => {
+    const nextIndex = (currentIndex + 1) % fontSizes.length;
+    const newSize = fontSizes[nextIndex];
     document.documentElement.style.setProperty('--font-size', newSize);
     localStorage.setItem('fontSize', newSize);
-    setFontSize(newSize);
-  };
-
-  const increaseFontSize = () => {
-    const newSize = `${parseInt(fontSize) + 2}px`;
-    setNewFontSize(newSize);
-  };
-
-  const decreaseFontSize = () => {
-    const newSize = `${parseInt(fontSize) - 2}px`;
-    setNewFontSize(newSize);
+    console.log('Font size changed to:', currentIndex);
+    setCurrentIndex(nextIndex);
   };
 
   return (
-    <div className="-translate-x-16 lg:translate-x-0 transition-transform">
-      <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="w-10 h-10 p-2 flex items-center gap-2 text-[#f3f2e9] hover:bg-[#f3f2e9] hover:text-green rounded-full bg-green-dark focus-visible:ring-0">
-          <ALargeSmall className="w-6 h-6 " /> {/* 替换为 a-large-small 图标 */}
-          <span className="sr-only">Adjust Font Size</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-green-dark text-white rounded-lg">
-        <DropdownMenuItem onSelect={increaseFontSize} className="cursor-pointer">
-          A+
-        </DropdownMenuItem>
-        <DropdownMenuItem onSelect={decreaseFontSize} className="cursor-pointer">
-          A-
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-    </div>
-    
+    <Button
+      variant="ghost"
+      onClick={toggleFontSize}
+      className="w-12 h-12 p-2 flex items-center gap-2 text-[#f3f2e9] hover:bg-[#f3f2e9] hover:text-green rounded-full bg-green focus-visible:ring-0"
+    >
+      <ALargeSmall className={iconSizes[currentIndex]} /> {/* 替换为实际的图标 */}
+      <span className="sr-only">Adjust Font Size</span>
+    </Button>
   );
 };
 

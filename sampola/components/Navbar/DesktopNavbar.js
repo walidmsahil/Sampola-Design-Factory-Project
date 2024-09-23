@@ -28,7 +28,7 @@ const DesktopNavbar = ({ menuItems, currentLocale }) => {
       <Link href={`/${currentLocale}`} className="flex items-center px-2 mx-2">
         <img src="/icons/sampolaLogoGreen.svg" alt="Logo" className="w-14 h-14" />
       </Link>
-      <div className='flex ml-4'>
+      <div className='flex ml-4 space-x-1'>
         {menuItems.map((item, index) => {
           const activeClass = isActive(item.href, item.label) 
             ? 'bg-[#F5F7EE] text-[#151515] dark:bg-[#3A4D40] dark:text-[#E0E5D9]' 
@@ -40,7 +40,7 @@ const DesktopNavbar = ({ menuItems, currentLocale }) => {
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <Link href={item.href} className={`p-3 px-4 ${activeClass} hover:bg-[#F5F7EE] hover:text-[#151515] dark:hover:bg-[#3A4D40] dark:hover:text-[#E0E5D9] rounded-full transition flex items-center`}>
+              <Link href={item.href} className={`p-2 px-4 whitespace-nowrap ${activeClass} hover:bg-[#F5F7EE] hover:text-[#151515] dark:hover:bg-[#3A4D40] dark:hover:text-[#E0E5D9] rounded-full transition flex items-center`}>
                 {item.label}
                 {item.dropdownItems && item.dropdownItems.length > 0 && (
                   <span className="ml-1">
