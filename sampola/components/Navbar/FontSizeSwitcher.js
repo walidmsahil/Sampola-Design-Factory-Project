@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { ALargeSmall } from 'lucide-react';  // 替换为实际的图标组件
 import { Button } from '@/components/ui/button';
 
-const FontSizeSwitcher = () => {
+const FontSizeSwitcher = ({ setIsSwitchingFontSize = () => {} }) => {  // 添加默认空函数
   const fontSizes = ['18px', '22px', '16px']; // 预设的字体大小：正常、大号、小号
   const [currentIndex, setCurrentIndex] = useState(0);
   const iconSizes = [ 'w-6 h-6','w-8 h-8', 'w-5 h-5'];
@@ -25,12 +25,16 @@ const FontSizeSwitcher = () => {
   }, []);
 
   const toggleFontSize = () => {
+    setIsSwitchingFontSize(true);  // 确保这里不会报错
     const nextIndex = (currentIndex + 1) % fontSizes.length;
     const newSize = fontSizes[nextIndex];
     document.documentElement.style.setProperty('--font-size', newSize);
     localStorage.setItem('fontSize', newSize);
     console.log('Font size changed to:', currentIndex);
     setCurrentIndex(nextIndex);
+    setTimeout(() => {
+      setIsSwitchingFontSize(false);
+    }, 300);
   };
 
   return (

@@ -12,17 +12,17 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="flex justify-end items-center ml-12 mr-2 w-96">
+    <div className="flex justify-end items-center lg:ml-12 mr-2 lg:w-96 w-full">
       <form
         onSubmit={handleSubmit}
-        className="flex items-center bg-green text-white rounded-full overflow-hidden w-full max-w-md relative"
+        className="flex items-center bg-green text-white rounded-full overflow-hidden w-full lg:max-w-md relative"
       >
         <input
           type="text"
           placeholder=""
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full p-2 bg-[#f3f2e9] text-[#151515] placeholder-[#f3f2e9] outline-none border-none rounded-lg px-6 pr-8"
+          className="w-full lg:p-2 lg:pr-9 p-1 bg-[#f3f2e9] text-[#151515] placeholder-[#f3f2e9] outline-none border-none rounded-lg px-6 pr-8"
         />
         <button
           type="submit"

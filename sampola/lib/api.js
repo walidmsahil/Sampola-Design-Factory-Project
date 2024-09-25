@@ -101,3 +101,40 @@ export async function getCoreServiceSectionsData(locale) {
     return [];
   }
 }
+
+// 获取 core_service_sections 数据的 API 函数
+export async function getHomePageData(locale) {
+  try {
+    const res = await apiClient.get(`http://localhost:1337/api/home-page?locale=en&populate[hero_section][populate]=*&populate[services_sections]=*&populate[core_service_sections][populate]=*`);
+    const data = res.data.data?.attributes || {};
+
+    // 解构出所需字段，并为每个字段提供默认值
+    const { hero_section, services_sections,core_service_sections } = data;
+    
+    // 将数据整理为一个干净的对象返回
+    return {
+      welcomeTitle: hero_section?.data?.attributes?.welcome_title || '',
+      subtitle: hero_section?.data?.attributes?.subtitle || '',
+      ctaButtonText: hero_section?.data?.attributes?.cta_button_text || '',
+      ctaButtonLink: hero_section?.data?.attributes?.cta_button_link || '',
+      backgroundImage: hero_section?.data?.attributes?.background_image?.data?.attributes?.url || '/default-image.jpg',
+      services: services_sections?.data.map(service => ({
+        id: service.id,
+        title: service.attributes?.service_title || '',
+        description: service.attributes?.description || '',
+        ctaButtonText: service.attributes?.cta_button_text || '',
+        ctaButtonLink: service.attributes?.cta_button_link || ''
+      })) || [],
+      coreServices: core_service_sections?.data.map(coreService => ({
+        id: coreService.id,
+        title: coreService.attributes?.title || '',
+        description: coreService.attributes?.description || '',
+        image: coreService.attributes?.image?.data?.attributes?.url || '/default-image.jpg',
+        widthRatio: coreService.attributes?.widthRatio,
+      })) || []
+    };
+  } catch (error) {
+    console.error('Error fetching core home page data:', error);
+    return {};
+  }
+}

@@ -13,7 +13,6 @@ export default async function Navbar({ params: { locale } }) {
     <NavbarClient
       menuItems={menuItems}
       currentLocale={currentLocale}
-      availableLocales={availableLocales}
     />
   );
 }

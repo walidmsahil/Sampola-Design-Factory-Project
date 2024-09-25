@@ -24,7 +24,7 @@ const DesktopNavbar = ({ menuItems, currentLocale }) => {
   };
 
   return (
-    <div className="hidden lg:flex bg-[#45624E] dark:bg-[#2A3C30] rounded-full h-fit items-center p-3 min-w-fit">
+    <div className="hidden lg:flex bg-[#45624E] dark:bg-[#605A4E] rounded-full h-fit items-center p-3 min-w-fit ">
       <Link href={`/${currentLocale}`} className="flex items-center px-2 mx-2">
         <img src="/icons/sampolaLogoGreen.svg" alt="Logo" className="w-14 h-14" />
       </Link>
