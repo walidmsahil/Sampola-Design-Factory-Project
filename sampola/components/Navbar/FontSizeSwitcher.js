@@ -41,7 +41,7 @@ const FontSizeSwitcher = ({ setIsSwitchingFontSize = () => {} }) => {  // 添加
     <Button
       variant="ghost"
       onClick={toggleFontSize}
-      className="w-12 h-12 p-2 flex items-center gap-2 text-[#f3f2e9] hover:bg-[#f3f2e9] hover:text-green rounded-full bg-green focus-visible:ring-0"
+      className="w-12 h-12 p-2 flex items-center gap-2  text-[#f3f2e9] dark:text-[#C0CFB2] hover:bg-[#f3f2e9] dark:hover:text-[#000000] dark:hover:bg-[#C0CFB2] hover:text-primary  bg-primary rounded-full focus-visible:ring-0"
     >
       <ALargeSmall className={iconSizes[currentIndex]} /> {/* 替换为实际的图标 */}
       <span className="sr-only">Adjust Font Size</span>

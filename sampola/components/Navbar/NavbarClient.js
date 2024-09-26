@@ -64,7 +64,7 @@ export default function NavbarClient({ menuItems, currentLocale }) {
         }`}
       >
         <DesktopNavbar menuItems={menuItems} currentLocale={currentLocale} />
-        <div className="ml-auto hidden lg:flex items-center rounded-full bg-green h-16 space-x-4 mr-4 p-4">
+        <div className="ml-auto hidden lg:flex items-center rounded-full bg-primary h-16 space-x-4 mr-4 p-4">
           <FontSizeSwitcher setIsSwitchingFontSize={setIsSwitchingFontSize} isSwitchingFontSize={isSwitchingFontSize} />
           <LanguageSwitcher currentLocale={currentLocale}  />
           <ThemeToggle />

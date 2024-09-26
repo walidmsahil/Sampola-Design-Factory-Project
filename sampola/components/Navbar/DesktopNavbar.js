@@ -24,15 +24,15 @@ const DesktopNavbar = ({ menuItems, currentLocale }) => {
   };
 
   return (
-    <div className="hidden lg:flex bg-[#45624E] dark:bg-[#605A4E] rounded-full h-fit items-center p-3 min-w-fit ">
+    <div className="hidden lg:flex bg-primary dark:bg-primary-dark rounded-full h-fit items-center p-3 min-w-fit">
       <Link href={`/${currentLocale}`} className="flex items-center px-2 mx-2">
         <img src="/icons/sampolaLogoGreen.svg" alt="Logo" className="w-14 h-14" />
       </Link>
       <div className='flex ml-4 space-x-1'>
         {menuItems.map((item, index) => {
           const activeClass = isActive(item.href, item.label) 
-            ? 'bg-[#F5F7EE] text-[#151515] dark:bg-[#3A4D40] dark:text-[#E0E5D9]' 
-            : 'text-[#C0CFB2] dark:text-[#A0B0A5]';
+            ? 'bg-button text-[#151515] dark:bg-button dark:text-[#151515] hover:text-[#151515]' 
+            : 'text-[#C0CFB2] dark:text-[#C0CFB2]';
           return (
             <div
               key={index}
@@ -40,7 +40,7 @@ const DesktopNavbar = ({ menuItems, currentLocale }) => {
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <Link href={item.href} className={`p-2 px-4 whitespace-nowrap ${activeClass} hover:bg-[#F5F7EE] hover:text-[#151515] dark:hover:bg-[#3A4D40] dark:hover:text-[#E0E5D9] rounded-full transition flex items-center`}>
+              <Link href={item.href} className={`p-2 px-4 whitespace-nowrap ${activeClass} hover:bg-button hover:text-[#151515] dark:hover:bg-button dark:hover:text-[#151515] rounded-full transition flex items-center`}>
                 {item.label}
                 {item.dropdownItems && item.dropdownItems.length > 0 && (
                   <span className="ml-1">
@@ -49,14 +49,14 @@ const DesktopNavbar = ({ menuItems, currentLocale }) => {
                 )}
               </Link>
               {item.dropdownItems && item.dropdownItems.length > 0 && openIndex === index && (
-                <div className="absolute left-0 top-full bg-[#45624E] dark:bg-[#2A3C30] rounded-md z-10 min-w-max">
+                <div className="absolute left-0 top-full bg-primary dark:bg-[#242423] rounded-md z-10 min-w-max">
                   <ul className="flex flex-col space-y-2 p-2 whitespace-nowrap">
                     {item.dropdownItems.map((subItem, subIndex) => (
                       <li key={subIndex}>
-                        <Link href={subItem.href} className={`block px-4 py-2 text-sm hover:bg-[#F5F7EE] hover:text-[#151515] dark:hover:bg-[#3A4D40] dark:hover:text-[#E0E5D9] rounded-md transition ${
+                        <Link href={subItem.href} className={`block px-4 py-2 text-sm hover:bg-button hover:text-[#151515] dark:hover:bg-button dark:hover:text-[#151515] rounded-md transition ${
                           isActive(subItem.href, subItem.label) 
-                            ? 'bg-[#F5F7EE] text-[#151515] dark:bg-[#3A4D40] dark:text-[#E0E5D9]' 
-                            : 'text-[#C0CFB2] dark:text-[#A0B0A5]'
+                            ? 'bg-button text-[#151515] dark:bg-button dark:text-[#151515]' 
+                            : 'text-[#C0CFB2] dark:text-[#C0CFB2]'
                         }`}>
                           {subItem.label}
                         </Link>

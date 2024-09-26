@@ -1,7 +1,6 @@
-// app/home/page.js (assuming you're using app directory)
+// app/home/page.js
 
 import Image from 'next/image';
-import Link from 'next/link';
 import ServiceComponent from '@/components/ServiceComponent';
 import CoreServiceCard from '@/components/CoreServiceCard';
 import HeroSection from '../../components/HeroSection';
@@ -37,9 +36,9 @@ export default async function Home({ params }) {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Large Placeholder Section */}
         <section className="my-16 flex justify-center">
-          <div className="rounded-lg shadow-md overflow-hidden max-w-full w-full h-[400px] md:h-[600px]">
-            <Image
-              src={require('../../public/images/IMG20240911095353.jpg')}
+          <div className="rounded-lg shadow-md overflow-hidden max-w-full w-[1300px] h-[400px] md:h-[600px]">
+          <Image
+              src="/images/IMG20240911095353.jpg" // 直接使用图片的路径字符串
               alt="Large Placeholder"
               width={1200}
               height={900} // 图片原始比例为4:3
@@ -52,7 +51,7 @@ export default async function Home({ params }) {
         <ServiceComponent services={services} />
         
         <div className="flex w-full justify-center">
-          <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
+          <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
         </div>
 
         <section className="mb-16">
@@ -68,7 +67,7 @@ export default async function Home({ params }) {
               widthRatio={service.widthRatio} // 传递 widthRatio
             />
             <div className="flex w-full justify-center">
-              <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
+              <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
             </div>
           </div>
         ))}

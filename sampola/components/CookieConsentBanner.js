@@ -34,7 +34,7 @@ export default function CookieConsentBanner() {
         onAccept={() => console.log("用户已同意所有 Cookie")}
         onDecline={() => console.log("用户已拒绝非必要的 Cookie")}
         containerClasses="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 flex items-center justify-between z-50"
-        buttonClasses="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded transition duration-300"
+        buttonClasses="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-2 px-4 rounded transition duration-300"
         declineButtonClasses="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded transition duration-300"
       >
         <span>本网站使用 Cookie 来提升用户体验。</span>{" "}

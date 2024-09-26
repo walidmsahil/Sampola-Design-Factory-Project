@@ -5,7 +5,7 @@ import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
+// import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 export default function LanguageSwitcher({ currentLocale }) {
   const router = useRouter();
@@ -73,12 +73,11 @@ export default function LanguageSwitcher({ currentLocale }) {
     };
   }, [isMenuOpen]);
 
-  if (isMobile) {
     return (
-      <div className="relative w-12 h-12 bg-green" ref={menuRef}> {/* 新增 ref={menuRef} */}
+      <div className="relative w-12 h-12 bg-primary" ref={menuRef}> {/* 新增 ref={menuRef} */}
         <Button
           variant="ghost"
-          className="w-12 h-12 p-2 flex items-center gap-2 text-[#f3f2e9] hover:bg-[#f3f2e9] hover:text-green rounded-full bg-green focus-visible:ring-0"
+          className={`w-12 h-12 p-2 flex items-center gap-2 ${isMenuOpen ? 'bg-[#f3f2e9] text-primary':''} text-[#f3f2e9] hover:bg-[#f3f2e9] dark:hover:bg-[#C0CFB2] hover:text-primary rounded-full bg-primary dark:text-[#C0CFB2] dark:hover:text-[#151515] focus-visible:ring-0`}
           onClick={toggleMenu} // 点击按钮切换菜单显示状态
         >
           <Globe className="w-6 h-6 focus:outline-none" />
@@ -92,15 +91,15 @@ export default function LanguageSwitcher({ currentLocale }) {
               animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}    // 保持 x 轴的偏移
               exit={{ opacity: 0, scale: 0.9, y: -20, x: "-50%" }}    // 保持 x 轴的偏移
               transition={{ duration: 0.2 }}
-              className="absolute -top-16 left-[50%] flex justify-between items-center bg-[#f3f2e9] rounded-xl shadow-lg p-2 w-auto min-w-max"
+              className={`${isMobile ? '-top-16' : '-bottom-16'} absolute left-[50%] flex justify-between items-center text-[#C0CFB2]  bg-primary rounded-xl shadow-lg p-2 w-auto min-w-max`}
             >
               <div className="flex space-x-2">
                 {availableLocales.map((locale) => (
                   <div
                     key={locale}
                     onClick={() => handleLocaleChange(locale)}
-                    className={`px-3 py-2 rounded-full text-sm w-12 text-center cursor-pointer 
-                      ${currentLocale === locale ? 'text-green' : 'text-green-light hover:text-green'}`}
+                    className={`px-3 py-2 rounded-full text-sm w-12 text-center cursor-pointer hover:text-[#f3f2e9] dark:hover:text-[#f3f2e9]
+                      ${currentLocale === locale ? 'text-[#f3f2e9]' : 'text-[#C0CFB2]'}`}
                   >
                     {locale.toUpperCase()}
                   </div>
@@ -111,27 +110,26 @@ export default function LanguageSwitcher({ currentLocale }) {
         </AnimatePresence>
       </div>
     );
-  }
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="w-12 h-12 p-2 flex items-center gap-2 text-[#f3f2e9] hover:bg-[#f3f2e9] hover:text-green rounded-full bg-green focus-visible:ring-0">
-          <Globe className="w-6 h-6 focus:outline-none" />
-          <span className="sr-only">Select Language</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="bg-green-dark text-white rounded-lg">
-        {availableLocales.map((locale) => (
-          <DropdownMenuItem
-            key={locale}
-            onSelect={() => handleLocaleChange(locale)}
-            className="cursor-pointer"
-          >
-            {locale === 'en' ? 'English' : locale === 'fi' ? 'Suomi' : 'Svenska'}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+  // return (
+  //   <DropdownMenu>
+  //     <DropdownMenuTrigger asChild>
+  //       <Button variant="ghost" className="w-12 h-12 p-2 flex items-center gap-2  text-[#f3f2e9] dark:text-[#C0CFB2] hover:bg-[#f3f2e9] dark:hover:text-[#000000] dark:hover:bg-[#C0CFB2] hover:text-primary  bg-primary rounded-full focus-visible:ring-0">
+  //         <Globe className="w-6 h-6 focus:outline-none" />
+  //         <span className="sr-only">Select Language</span>
+  //       </Button>
+  //     </DropdownMenuTrigger>
+  //     <DropdownMenuContent className="bg-primary-dark text-white rounded-lg">
+  //       {availableLocales.map((locale) => (
+  //         <DropdownMenuItem
+  //           key={locale}
+  //           onSelect={() => handleLocaleChange(locale)}
+  //           className="cursor-pointer"
+  //         >
+  //           {locale === 'en' ? 'English' : locale === 'fi' ? 'Suomi' : 'Svenska'}
+  //         </DropdownMenuItem>
+  //       ))}
+  //     </DropdownMenuContent>
+  //   </DropdownMenu>
+  // );
 }

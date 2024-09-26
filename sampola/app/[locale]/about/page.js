@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
 import Link from "next/link"
 import dynamic from "next/dynamic"
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/Separator"
 import Faq from '@/components/Faq'
 import Carousel from '@/components/Carousel/Carousel'
 import CoreServiceCard from '@/components/CoreServiceCard'
@@ -26,33 +26,33 @@ export default function Component({ params: { locale } }) {
   }, [locale]); // 添加 locale 依赖
   return (
     <div className="container mx-auto px-4 ">
-      <h1 className="text-5xl font-bold text-green mb-4 text-center p-6">About Us</h1>
+      <h1 className="text-5xl font-bold text-primary mb-4 text-center p-6">About Us</h1>
       <div className="flex w-full justify-center">
-        <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
+        <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
       </div>
       {/* Tabs and Tab List */}
       <Tabs defaultValue="sampola">
         <TabsList className="flex w-full justify-between bg-transparent flex-wrap">
           <TabsTrigger
             value="sampola"
-            className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark hover:text-green-dark data-[state=active]:text-green-dark"
+            className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-primary-dark flex-grow data-[state=active]:border-primary-dark hover:text-primary-dark data-[state=active]:text-primary-dark"
           >
             Our Mission
           </TabsTrigger>
           <Separator className="bg-[#becfc1]" orientation="vertical" />
-          <TabsTrigger value="services" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark hover:text-green-dark data-[state=active]:text-green-dark">
+          <TabsTrigger value="services" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-primary-dark flex-grow data-[state=active]:border-primary-dark hover:text-primary-dark data-[state=active]:text-primary-dark">
             Core Services
           </TabsTrigger>
           <Separator className="bg-[#becfc1]" orientation="vertical" />
-          <TabsTrigger value="partners" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark hover:text-green-dark data-[state=active]:text-green-dark">
+          <TabsTrigger value="partners" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-primary-dark flex-grow data-[state=active]:border-primary-dark hover:text-primary-dark data-[state=active]:text-primary-dark">
             Partners
           </TabsTrigger>
           <Separator className="bg-[#becfc1]" orientation="vertical" />
-          <TabsTrigger value="impact" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark hover:text-green-dark data-[state=active]:text-green-dark">
+          <TabsTrigger value="impact" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-primary-dark flex-grow data-[state=active]:border-primary-dark hover:text-primary-dark data-[state=active]:text-primary-dark">
             Social Impact
           </TabsTrigger>
           <Separator className="bg-[#becfc1]" orientation="vertical" />
-          <TabsTrigger value="about" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-green-dark flex-grow data-[state=active]:border-green-dark hover:text-green-dark data-[state=active]:text-green-dark">
+          <TabsTrigger value="about" className="font-bold md:data-[state=active]:border-b-4 md:hover:border-b-4 hover:border-primary-dark flex-grow data-[state=active]:border-primary-dark hover:text-primary-dark data-[state=active]:text-primary-dark">
             Our Story
           </TabsTrigger>
         </TabsList>
@@ -75,7 +75,7 @@ export default function Component({ params: { locale } }) {
                 className="mb-4 rounded-lg"
               />
               
-              <h2 className="text-3xl font-bold mb-4 text-green">Supporting Communities, Empowering Work</h2>
+              <h2 className="text-3xl font-bold mb-4 text-primary">Supporting Communities, Empowering Work</h2>
               <p className="text-lg mb-4">
                 Sampola is a non-profit organization committed to providing job opportunities and social support to people with special needs.
                 Our vision is to create an inclusive society where everyone can improve their quality of life through meaningful work and gain social recognition and respect.
@@ -104,7 +104,7 @@ export default function Component({ params: { locale } }) {
               height={300}
               className="mb-4 rounded-lg"
             />
-            <h2 className="text-3xl font-bold mb-4 text-green">Empowering Communities through Work</h2>
+            <h2 className="text-3xl font-bold mb-4 text-primary">Empowering Communities through Work</h2>
             <p className="text-lg mb-4">
               At Sampola, we provide three primary services to support communities and individuals with special needs:
             </p>
@@ -136,7 +136,7 @@ export default function Component({ params: { locale } }) {
               className="mb-4 rounded-lg"
             /> */}
             <Carousel></Carousel>
-            <h2 className="text-3xl font-bold mb-4 text-green">Building a Better Future Together</h2>
+            <h2 className="text-3xl font-bold mb-4 text-primary">Building a Better Future Together</h2>
             <p className="text-lg mb-4">
               Sampola works with a wide range of local and international partners who share our commitment to social responsibility and sustainability.
               Together, we create meaningful work opportunities, foster social integration, and promote environmentally friendly practices.
@@ -163,7 +163,7 @@ export default function Component({ params: { locale } }) {
               height={300}
               className="mb-4 rounded-lg max-h-[482px] object-cover"
             />
-            <h2 className="text-3xl font-bold mb-4 text-green">Making a Difference, One Life at a Time</h2>
+            <h2 className="text-3xl font-bold mb-4 text-primary">Making a Difference, One Life at a Time</h2>
             <p className="text-lg mb-4">
               At Sampola, we believe in the transformative power of work. Through our programs, we have helped hundreds of individuals with disabilities gain employment,
               find a sense of purpose, and build confidence. Our recycling and sustainability projects further extend our impact by promoting environmental responsibility.
@@ -190,7 +190,7 @@ export default function Component({ params: { locale } }) {
               height={300}
               className="mb-4 rounded-lg"
             />
-            <h2 className="text-3xl font-bold mb-4 text-green">Our Story and Vision</h2>
+            <h2 className="text-3xl font-bold mb-4 text-primary">Our Story and Vision</h2>
             <p className="text-lg mb-4">
               Sampola was founded in the 1960s with the goal of creating meaningful employment opportunities for individuals with disabilities and those in need of special support.
               Over the decades, we have grown into a comprehensive organization that not only provides job opportunities but also promotes sustainability through various recycling initiatives.
@@ -203,9 +203,9 @@ export default function Component({ params: { locale } }) {
         </TabsContent>
       </Tabs>
 
-      {/* <Separator className="my-10 h-[2px] bg-green justify-center w-full" /> */}
+      {/* <Separator className="my-10 h-[2px] bg-primary justify-center w-full" /> */}
       <div className="flex w-full justify-center">
-        <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
+        <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
       </div>
 
       <section className="mb-16">
@@ -220,7 +220,7 @@ export default function Component({ params: { locale } }) {
               imageAlt={service.attributes.title} // 使用 title 作为 alt 文本
             />
             <div className="flex w-full justify-center">
-              <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
+              <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
             </div>
           </div>
         ))}
@@ -228,11 +228,11 @@ export default function Component({ params: { locale } }) {
       {/* FAQ Section */}
       <Faq></Faq>
       <div className="flex w-full justify-center">
-        <Separator className="my-10 h-[2px] w-[95%] bg-green justify-center " />
+        <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
       </div>
       {/* Success Stories Section */}
       <section>
-        <h2 className="text-3xl font-bold mb-8 text-green-dark">Sampola's Success Stories</h2>
+        <h2 className="text-3xl font-bold mb-8 text-primary-dark">Sampola's Success Stories</h2>
         <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-8">
           <Card className="border-0 shadow-lg overflow-hidden">
             <Image
@@ -243,9 +243,9 @@ export default function Component({ params: { locale } }) {
               className="w-full  md:h-72 h-48 object-cover"
             />
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-2 text-green-dark">Work Support in the Community</h3>
+              <h3 className="text-xl font-bold mb-2 text-primary-dark">Work Support in the Community</h3>
               <p className="mb-4">With Sampola's help, many individuals with disabilities have found meaningful work, boosting their confidence and improving their lives.</p>
-              <Link href="#" className="text-green hover:underline">Read More</Link>
+              <Link href="#" className="text-primary hover:underline">Read More</Link>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-lg overflow-hidden">
@@ -257,9 +257,9 @@ export default function Component({ params: { locale } }) {
               className="w-full  md:h-72 h-48 object-cover"
             />
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-2 text-green-dark">Success in Recycling Projects</h3>
+              <h3 className="text-xl font-bold mb-2 text-primary-dark">Success in Recycling Projects</h3>
               <p className="mb-4">Sampola's recycling projects have transformed old advertising materials into eco-friendly products, earning praise from businesses and the community.</p>
-              <Link href="#" className="text-green hover:underline">Read More</Link>
+              <Link href="#" className="text-primary hover:underline">Read More</Link>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-lg overflow-hidden">
@@ -271,9 +271,9 @@ export default function Component({ params: { locale } }) {
               className="w-full  md:h-72 h-48 object-cover"
             />
             <CardContent className="p-6">
-              <h3 className="text-xl font-bold mb-2 text-green-dark">Outsourcing Services for Businesses</h3>
+              <h3 className="text-xl font-bold mb-2 text-primary-dark">Outsourcing Services for Businesses</h3>
               <p className="mb-4">Through partnerships with local businesses, Sampola provides high-quality outsourcing services that help companies save costs while meeting their social responsibility commitments.</p>
-              <Link href="#" className="text-green hover:underline">Read More</Link>
+              <Link href="#" className="text-primary hover:underline">Read More</Link>
             </CardContent>
           </Card>
         </div>

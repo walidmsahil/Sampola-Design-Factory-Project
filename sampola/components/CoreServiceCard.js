@@ -35,14 +35,14 @@ export default function CoreServiceCard({
         {/* Text content */}
         <div className={`${imgLeft ? `${textWidthClass} order-2` : textWidthClass} py-6`}>
           <CardHeader>
-            <CardTitle className="text-4xl font-bold text-green">{title}</CardTitle>
+            <CardTitle className="text-4xl font-bold text-primary dark:text-[#C0CFB2]">{title}</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="mb-4">{description}</p>
             <p className="flex justify-center w-full mt-8">
               <Link
                 href={`/services/services-for-businesses`}
-                className="bg-green-dark text-[#F5F7EE] px-6 py-2 rounded-full hover:bg-green-light transition duration-300 flex items-center justify-center"
+                className="bg-button-green dark:hover:bg-[#C0CFB2] dark:hover:text-[#151515] text-[#F5F7EE] dark:text-[#C0CFB2] px-6 py-2 rounded-full hover:bg-button-hover transition duration-300 flex items-center justify-center"
               >
                 Learn more
               </Link>
@@ -56,8 +56,8 @@ export default function CoreServiceCard({
             <Image
               src={imageSrc}
               alt={imageAlt}
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
               className="rounded-2xl shadow-lg"
             />
           </div>

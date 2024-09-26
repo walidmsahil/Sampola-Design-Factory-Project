@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import SearchBar from '../SearchBar';
 import { useState } from 'react';
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/components/ui/Separator"
 import FontSizeSwitcher from "./FontSizeSwitcher"
 import LanguageSwitcher from "./LanguageSwitcher"
 import { ThemeToggle } from "@/components/theme-toggle";  // 客户端组件
@@ -102,7 +102,7 @@ const MobileNavbar = ({ menuItems, mobileMenuOpen, setMobileMenuOpen }) => {
 
   return (
     <div className="lg:hidden w-full">
-      <div className="flex bg-[#45624E] dark:bg-[#2A3C30] rounded-full h-fit items-center lg:p-3 px-1 min-w-fit mx-2 mt-2">
+      <div className="flex bg-primary dark:bg-[#242423] rounded-full h-fit items-center lg:p-3 px-1 min-w-fit mx-2 mt-2">
         <Link href={`/`} className="flex items-center px-2 mx-2">
           <img src="/icons/sampolaLogoGreen.svg" alt="Logo" className="w-14 h-14" />
         </Link>
@@ -118,7 +118,7 @@ const MobileNavbar = ({ menuItems, mobileMenuOpen, setMobileMenuOpen }) => {
         initial={{ clipPath: "circle(0px at 90% 40px)" }}
         animate={mobileMenuOpen ? { clipPath: "circle(150% at 90% 40px)" } : { clipPath: "circle(0px at 90% 40px)" }}
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
-        className={`-z-10 fixed top-0 left-0 w-full min-h-screen bg-[#45624E] p-8 flex flex-col space-y-4 ${mobileMenuOpen ? 'block' : 'hidden'}`}
+        className={`-z-10 fixed top-0 left-0 w-full min-h-screen bg-primary p-8 flex flex-col space-y-4 ${mobileMenuOpen ? 'block' : 'hidden'}`}
       >
         <div className='mt-14 back_button'>
           <button
@@ -163,7 +163,7 @@ const MobileNavbar = ({ menuItems, mobileMenuOpen, setMobileMenuOpen }) => {
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ duration: 0.1, ease: "linear" }}
-                className="absolute top-0 left-0 w-full min-h-screen bg-[#45624E] p-8 "
+                className="absolute top-0 left-0 w-full min-h-screen bg-primary p-8 "
               >
                 <div className='mt-16'>
                   {item.dropdownItems.map((subItem, subIndex) => (
@@ -183,7 +183,7 @@ const MobileNavbar = ({ menuItems, mobileMenuOpen, setMobileMenuOpen }) => {
         </AnimatePresence>
         <div className="absolute bottom-0 left-0 w-full">
           <Separator className="my-2 h-[1px] w-[95%] bg-[#C0CFB2] mx-auto justify-center " />
-          <div className="ml-auto flex justify-center items-center rounded-full bg-green h-16 space-x-4 mr-4 p-4">
+          <div className="ml-auto flex justify-center items-center rounded-full bg-primary h-16 space-x-4 mr-4 p-4">
             <FontSizeSwitcher />
             <LanguageSwitcher currentLocale={currentLocale} />
             <ThemeToggle />
