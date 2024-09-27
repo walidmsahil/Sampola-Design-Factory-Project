@@ -91,15 +91,15 @@ export default function LanguageSwitcher({ currentLocale }) {
               animate={{ opacity: 1, scale: 1, y: 0, x: "-50%" }}    // 保持 x 轴的偏移
               exit={{ opacity: 0, scale: 0.9, y: -20, x: "-50%" }}    // 保持 x 轴的偏移
               transition={{ duration: 0.2 }}
-              className={`${isMobile ? '-top-16' : '-bottom-16'} absolute left-[50%] flex justify-between items-center text-[#C0CFB2]  bg-primary rounded-xl shadow-lg p-2 w-auto min-w-max`}
+              className={`${isMobile ? '-top-16' : '-bottom-16'} absolute left-[50%] flex justify-between items-center text-[#C0CFB2] dark:text-[#45624E] dark:bg-[#C0CFB2]  bg-[#F5F7EE] rounded-xl shadow-lg p-2 w-auto min-w-max`}
             >
               <div className="flex space-x-2">
                 {availableLocales.map((locale) => (
                   <div
                     key={locale}
                     onClick={() => handleLocaleChange(locale)}
-                    className={`px-3 py-2 rounded-full text-sm w-12 text-center cursor-pointer hover:text-[#f3f2e9] dark:hover:text-[#f3f2e9]
-                      ${currentLocale === locale ? 'text-[#f3f2e9]' : 'text-[#C0CFB2]'}`}
+                    className={`px-3 py-2 rounded-full text-base w-12 text-center cursor-pointer hover:text-[#45624E] dark:hover:text-[#000000] dark:text-[#45624E] 
+                      ${currentLocale === locale ? 'text-[#45624E] dark:text-[#000000] ' : 'text-[#AABB99] dark:hover:text-[#000000]'}`}
                   >
                     {locale.toUpperCase()}
                   </div>

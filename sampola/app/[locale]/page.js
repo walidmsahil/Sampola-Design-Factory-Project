@@ -51,7 +51,7 @@ export default async function Home({ params }) {
         <ServiceComponent services={services} />
         
         <div className="flex w-full justify-center">
-          <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
+          <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
         </div>
 
         <section className="mb-16">
@@ -67,7 +67,7 @@ export default async function Home({ params }) {
               widthRatio={service.widthRatio} // 传递 widthRatio
             />
             <div className="flex w-full justify-center">
-              <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
+              <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
             </div>
           </div>
         ))}

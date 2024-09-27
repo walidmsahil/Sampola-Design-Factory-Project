@@ -1,6 +1,11 @@
+'use client';
 import Image from "next/image"
 import { Separator } from "@/components/ui/Separator"
+import { useTheme } from "next-themes";
 export default function Footer() {
+  const { theme } = useTheme(); // 获取当前主题
+  const logoSrc = theme === "dark" ? "/icons/sampolaFooterLogoDark.png" : "/icons/sampolaFooterLogo.png"; // 动态选择图片
+
   return (
     <footer className=" py-12 px-4">
       <div className="flex w-full justify-center">
@@ -46,25 +51,25 @@ export default function Footer() {
 
         <div className="w-full md:w-1/4 mb-6 md:mb-0 order-2">
           <ul className="space-y-2">
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Home</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Services for consumers</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Services for companies</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Services for municipal factor</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Contact</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Home</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Services for consumers</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Services for companies</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Services for municipal factor</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Contact</a></li>
           </ul>
         </div>
         <div className="w-full md:w-1/4 mb-6 md:mb-0 order-3">
           <ul className="space-y-2">
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">About us</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Kpsaatio</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Webshop</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Services for municipal factor</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff]">Contact</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">About us</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Kpsaatio</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Webshop</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Services for municipal factor</a></li>
+            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Contact</a></li>
           </ul>
         </div>
         <div className="w-full md:w-auto flex items-end justify-center order-4">
           <Image
-            src="/icons/sampolaFooterLogo.png"
+            src={logoSrc} // 根据主题动态加载图片
             alt="Sampola Logo"
             width={150}
             height={50}

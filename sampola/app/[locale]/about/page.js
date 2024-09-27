@@ -28,7 +28,7 @@ export default function Component({ params: { locale } }) {
     <div className="container mx-auto px-4 ">
       <h1 className="text-5xl font-bold text-primary mb-4 text-center p-6">About Us</h1>
       <div className="flex w-full justify-center">
-        <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
+        <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
       </div>
       {/* Tabs and Tab List */}
       <Tabs defaultValue="sampola">
@@ -203,9 +203,9 @@ export default function Component({ params: { locale } }) {
         </TabsContent>
       </Tabs>
 
-      {/* <Separator className="my-10 h-[2px] bg-primary justify-center w-full" /> */}
+      {/* <Separator className="my-10 h-1px] bg-primary justify-center w-full" /> */}
       <div className="flex w-full justify-center">
-        <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
+        <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
       </div>
 
       <section className="mb-16">
@@ -220,7 +220,7 @@ export default function Component({ params: { locale } }) {
               imageAlt={service.attributes.title} // 使用 title 作为 alt 文本
             />
             <div className="flex w-full justify-center">
-              <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
+              <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
             </div>
           </div>
         ))}
@@ -228,7 +228,7 @@ export default function Component({ params: { locale } }) {
       {/* FAQ Section */}
       <Faq></Faq>
       <div className="flex w-full justify-center">
-        <Separator className="my-10 h-[2px] w-[95%] bg-primary justify-center " />
+        <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
       </div>
       {/* Success Stories Section */}
       <section>

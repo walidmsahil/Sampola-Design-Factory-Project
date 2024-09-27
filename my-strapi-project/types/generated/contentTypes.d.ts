@@ -1174,6 +1174,42 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   };
 }
 
+export interface ApiServicesForBusinessesPageServicesForBusinessesPage
+  extends Schema.SingleType {
+  collectionName: 'services_for_businesses_pages';
+  info: {
+    singularName: 'services-for-businesses-page';
+    pluralName: 'services-for-businesses-pages';
+    displayName: 'ServicesForBusinessesPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    hero_section: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToOne',
+      'api::hero-section.hero-section'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiServicesSectionServicesSection
   extends Schema.CollectionType {
   collectionName: 'services_sections';
@@ -1308,6 +1344,7 @@ declare module '@strapi/types' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::main-image-section.main-image-section': ApiMainImageSectionMainImageSection;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::services-for-businesses-page.services-for-businesses-page': ApiServicesForBusinessesPageServicesForBusinessesPage;
       'api::services-section.services-section': ApiServicesSectionServicesSection;
       'api::test.test': ApiTestTest;
     }
