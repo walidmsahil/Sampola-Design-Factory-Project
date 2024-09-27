@@ -26,7 +26,7 @@ export default function Component({ params: { locale } }) {
   }, [locale]); // 添加 locale 依赖
   return (
     <div className="container mx-auto px-4 ">
-      <h1 className="text-5xl font-bold text-primary mb-4 text-center p-6">About Us</h1>
+      <h1 className="text-5xl font-bold text-primary mb-4 text-center p-6 mt-20">About Us</h1>
       <div className="flex w-full justify-center">
         <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
       </div>
