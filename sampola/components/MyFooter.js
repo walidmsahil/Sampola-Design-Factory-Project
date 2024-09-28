@@ -4,7 +4,7 @@ import { Separator } from "@/components/ui/Separator"
 import { useTheme } from "next-themes";
 export default function Footer() {
   const { theme } = useTheme(); // 获取当前主题
-  const logoSrc = theme === "dark" ? "/icons/sampolaFooterLogoDark.png" : "/icons/sampolaFooterLogo.png"; // 动态选择图片
+  const logoSrc = theme === "dark" ? "/icons/sampolaLogoGreen-textwhite.svg" : "/icons/sampolaLogoGreen-textblack.svg"; // 动态选择图片
 
   return (
     <footer className=" py-12 px-4">
@@ -67,12 +67,12 @@ export default function Footer() {
             <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Contact</a></li>
           </ul>
         </div>
-        <div className="w-full md:w-auto flex items-end justify-center order-4">
+        <div className=" md:w-auto flex items-end justify-end order-4">
           <Image
             src={logoSrc} // 根据主题动态加载图片
             alt="Sampola Logo"
-            width={150}
-            height={50}
+            width={200}
+            height={75}
           />
         </div>
       </div>

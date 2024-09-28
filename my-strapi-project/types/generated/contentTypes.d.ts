@@ -1186,6 +1186,11 @@ export interface ApiServicesForBusinessesPageServicesForBusinessesPage
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     hero_section: Attribute.Relation<
       'api::services-for-businesses-page.services-for-businesses-page',
@@ -1207,6 +1212,64 @@ export interface ApiServicesForBusinessesPageServicesForBusinessesPage
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToMany',
+      'api::services-for-businesses-page.services-for-businesses-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiServicesForMunicipalSectorPageServicesForMunicipalSectorPage
+  extends Schema.SingleType {
+  collectionName: 'services_for_municipal_sector_pages';
+  info: {
+    singularName: 'services-for-municipal-sector-page';
+    pluralName: 'services-for-municipal-sector-pages';
+    displayName: 'ServicesForMunicipalSectorPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    hero_section: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToOne',
+      'api::hero-section.hero-section'
+    >;
+    services_sections: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToMany',
+      'api::services-section.services-section'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToMany',
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1274,6 +1337,18 @@ export interface ApiServicesSectionServicesSection
         };
       }> &
       Attribute.DefaultTo<'/'>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1304,12 +1379,14 @@ export interface ApiTestTest extends Schema.CollectionType {
     singularName: 'test';
     pluralName: 'tests';
     displayName: 'test';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
+    test: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1345,6 +1422,7 @@ declare module '@strapi/types' {
       'api::main-image-section.main-image-section': ApiMainImageSectionMainImageSection;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::services-for-businesses-page.services-for-businesses-page': ApiServicesForBusinessesPageServicesForBusinessesPage;
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page': ApiServicesForMunicipalSectorPageServicesForMunicipalSectorPage;
       'api::services-section.services-section': ApiServicesSectionServicesSection;
       'api::test.test': ApiTestTest;
     }

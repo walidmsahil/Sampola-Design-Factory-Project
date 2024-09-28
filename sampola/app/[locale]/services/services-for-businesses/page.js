@@ -19,44 +19,30 @@ export default async function ServicesForBusinesses({ params }) {
 
   const opportunities = [
     {
-      title: 'Internships',
+      title: 'Assembly and packaging work',
       description:
-        'Internships provide individuals, typically students or recent graduates, with the chance to work in a professional environment for a limited period. Interns contribute to daily operations while learning new skills and building connections within the industry.',
+        'Our assembly and packaging services ensure that your products are prepared efficiently and professionally. Let us help streamline your production process and enhance your product presentation!',
       buttonText: 'Apply now',
       imageSrc: '/images/image36.jpg',
     },
     {
-      title: 'Apprenticeships',
+      title: 'Subcontracting work',
       description:
-        'Apprenticeships offer hands-on work experience while studying for a professional qualification. This provides individuals with the opportunity to develop practical skills, receive mentorship, and gain valuable experience in a chosen field. Ideal for those entering the workforce or changing careers.',
+        'Our subcontracting services offer flexible solutions tailored to your project needs. Let us help you manage workloads and meet deadlines while maintaining high standards of service!',
       buttonText: 'Apply now',
       imageSrc: '/images/image36.jpg',
     },
     {
-      title: 'Job Trials',
+      title: 'EAN-codes labeling and replacements',
       description:
-        'Job Trials allow individuals to try out a job for a short period, providing both the employer and the potential employee with a trial run before committing to a formal employment relationship. It is an effective way to assess job fit and performance in a real working environment.',
+        'We specialize in EAN code labeling and replacements to ensure your products meet retail standards. Trust us to streamline your inventory management and enhance your product visibility in the market!',
       buttonText: 'Apply now',
       imageSrc: '/images/image36.jpg',
     },
     {
-      title: 'Supported Employment',
+      title: 'Freight forwarding and deliveries',
       description:
-        'Supported Employment focuses on assisting individuals with disabilities or other barriers to employment in securing and maintaining meaningful jobs. This program offers customized support, including job coaching, workplace accommodations, and skill development to ensure long-term employment success.',
-      buttonText: 'Apply now',
-      imageSrc: '/images/image36.jpg',
-    },
-    {
-      title: 'Work Activities',
-      description:
-        'Work Activities are tailored programs that provide individuals with structured, meaningful daily tasks. These activities are often aimed at those who may not be ready for full employment and focus on skill-building, confidence development, and social engagement.',
-      buttonText: 'Apply now',
-      imageSrc: '/images/image36.jpg',
-    },
-    {
-      title: 'Job Coaching',
-      description:
-        'Job Coaching offers personalized support for individuals in various employment phases, from job searching to maintaining employment. Coaches assist with career planning, resume building, interview preparation, and workplace adjustment, ensuring long-term career growth.',
+        'We specialize in EAN code labeling and replacements to ensure your products meet retail standards. Trust us to streamline your inventory management and enhance your product visibility in the market!',
       buttonText: 'Apply now',
       imageSrc: '/images/image36.jpg',
     },

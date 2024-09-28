@@ -8,6 +8,21 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			fontSize: {
+				xs: 'calc(var(--font-size) * 0.75)',
+				sm: 'calc(var(--font-size) * 0.875)',
+				base: 'var(--font-size)',
+				lg: 'calc(var(--font-size) * 1.125)',
+				xl: 'calc(var(--font-size) * 1.25)',
+				'2xl': 'calc(var(--font-size) * 1.5)',
+				'3xl': 'calc(var(--font-size) * 1.875)',
+				'4xl': 'calc(var(--font-size) * 2.25)',
+				'5xl': 'calc(var(--font-size) * 3)',
+				'6xl': 'calc(var(--font-size) * 3.75)',
+				'7xl': 'calc(var(--font-size) * 4.5)',
+				'8xl': 'calc(var(--font-size) * 6)',
+				'9xl': 'calc(var(--font-size) * 8)',
+			},
 			colors: {
 				background: 'var(--background)',    // 变量值会在 CSS 中定义
 				foreground: 'var(--foreground)',

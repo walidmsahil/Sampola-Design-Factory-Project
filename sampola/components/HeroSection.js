@@ -27,7 +27,7 @@ export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgro
             suppressHydrationWarning={true}
           >
             <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}${backgroundImage}`}
+              src={backgroundImage}
               alt={title}
               fill
               style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -47,7 +47,7 @@ export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgro
           </p>
           <Link
             href={`/${locale}/about`}
-            className="bg-primary dark:bg-[#C0CFB2] hover:bg-[#C0CFB2] text-[#F5F7EE] dark:text-[#151515] hover:text-[#151515] px-6 py-2 rounded-full transition duration-300 select-none"
+            className="bg-primary hover:dark:bg-primary hover:dark:text-[#C0CFB2] dark:bg-[#C0CFB2] hover:bg-[#C0CFB2] text-[#F5F7EE] dark:text-[#151515] hover:text-[#151515] px-6 py-2 rounded-full transition duration-300 select-none"
           >
             Learn more
           </Link>
