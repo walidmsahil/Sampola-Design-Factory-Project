@@ -1,3 +1,5 @@
+// ServicesForBusinesses page
+
 import { Separator } from '@/components/ui/Separator';
 import HeroSection from '@/components/HeroSection';
 import { getServicesForBusinessesPageData } from '@/lib/api';
@@ -8,87 +10,55 @@ export default async function ServicesForBusinesses({ params }) {
 
   // Fetch data directly in the server component
   const ServicesForBusinessesPageData = await getServicesForBusinessesPageData(locale);
+  console.log('ServicesForBusinessesPageData', JSON.stringify(ServicesForBusinessesPageData));
 
   const {
-    welcomeTitle,
-    subtitle,
-    ctaButtonText,
-    ctaButtonLink,
-    backgroundImage,
+    heroSection,
+    servicesSections,
   } = ServicesForBusinessesPageData;
-
-  const opportunities = [
-    {
-      title: 'Assembly and packaging work',
-      description:
-        'Our assembly and packaging services ensure that your products are prepared efficiently and professionally. Let us help streamline your production process and enhance your product presentation!',
-      buttonText: 'Apply now',
-      imageSrc: '/images/image36.jpg',
-    },
-    {
-      title: 'Subcontracting work',
-      description:
-        'Our subcontracting services offer flexible solutions tailored to your project needs. Let us help you manage workloads and meet deadlines while maintaining high standards of service!',
-      buttonText: 'Apply now',
-      imageSrc: '/images/image36.jpg',
-    },
-    {
-      title: 'EAN-codes labeling and replacements',
-      description:
-        'We specialize in EAN code labeling and replacements to ensure your products meet retail standards. Trust us to streamline your inventory management and enhance your product visibility in the market!',
-      buttonText: 'Apply now',
-      imageSrc: '/images/image36.jpg',
-    },
-    {
-      title: 'Freight forwarding and deliveries',
-      description:
-        'We specialize in EAN code labeling and replacements to ensure your products meet retail standards. Trust us to streamline your inventory management and enhance your product visibility in the market!',
-      buttonText: 'Apply now',
-      imageSrc: '/images/image36.jpg',
-    },
-  ];
-
 
   return (
     <div className="min-h-screen">
+      {/* Hero Section */}
       <HeroSection
-        title={welcomeTitle}
-        subtitle={subtitle}
-        ctaText={ctaButtonText}
-        ctaLink={ctaButtonLink}
-        backgroundImage={backgroundImage}
+        title={heroSection.welcomeTitle}
+        subtitle={heroSection.subtitle}
+        ctaText={heroSection.ctaButtonText}
+        ctaLink={heroSection.ctaButtonLink}
+        backgroundImage={heroSection.backgroundImage}
       />
 
+      {/* Services Sections */}
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid gap-12">
-          {/* Loop through opportunities with a step of 2 */}
-          {opportunities.map((_, index) => {
+          {/* Loop through servicesSections with a step of 2 */}
+          {servicesSections.map((service, index) => {
             // Only render when index is even (step by 2)
             if (index % 2 === 0) {
               return (
                 <div key={index}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12">
+                  <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12">
                     {/* First ServiceCard */}
                     <ServiceCard
-                      title={opportunities[index].title}
-                      description={opportunities[index].description}
-                      buttonText={opportunities[index].buttonText}
-                      imageSrc={opportunities[index].imageSrc}
+                      title={servicesSections[index].title}
+                      description={servicesSections[index].description}
+                      buttonText={servicesSections[index].ctaButtonText}
+                      imageSrc={servicesSections[index].iconImage}
                     />
 
                     {/* Second ServiceCard (if it exists) */}
-                    {opportunities[index + 1] && (
+                    {servicesSections[index + 1] && (
                       <ServiceCard
-                        title={opportunities[index + 1].title}
-                        description={opportunities[index + 1].description}
-                        buttonText={opportunities[index + 1].buttonText}
-                        imageSrc={opportunities[index + 1].imageSrc}
+                        title={servicesSections[index + 1].title}
+                        description={servicesSections[index + 1].description}
+                        buttonText={servicesSections[index + 1].ctaButtonText}
+                        imageSrc={servicesSections[index + 1].iconImage}
                       />
                     )}
                   </div>
 
                   {/* Insert Separator after every two ServiceCards except the last two */}
-                  {index + 1 < opportunities.length - 1 && (index) % 2 === 0 && (
+                  {index + 1 < servicesSections.length - 1 && (index) % 2 === 0 && (
                     <div key={`separator-${index}`} className="flex justify-center">
                       <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center" />
                     </div>

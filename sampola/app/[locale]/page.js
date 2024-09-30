@@ -31,21 +31,24 @@ export default async function Home({ params }) {
         ctaText={ctaButtonText}
         ctaLink={ctaButtonLink}
         backgroundImage={backgroundImage}
+        bgColor={'bg-[#F5F7EE] dark:bg-[#353533]'}
+        showSeparator={false}
       />
       
       <div className="container mx-auto px-4 lg:px-8">
         {/* Large Placeholder Section */}
         <section className="my-16 flex justify-center">
-          <div className="rounded-lg shadow-md overflow-hidden max-w-full w-[1300px] h-[400px] md:h-[600px]">
-          <Image
-              src="/images/IMG20240911095353.jpg" // 直接使用图片的路径字符串
-              alt="Large Placeholder"
-              width={1200}
-              height={900} // 图片原始比例为4:3
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        </section>
+  <div className="rounded-lg shadow-md overflow-hidden max-w-full w-[1300px] h-[400px] md:h-[600px]">
+    <video
+      src="https://video.wixstatic.com/video/c30ba3_d3f982dbdd9e47ae942e06a467947178/1080p/mp4/file.mp4"
+      controls
+      autoPlay
+      loop
+      muted
+      className="w-full h-full object-cover object-center"
+    />
+  </div>
+</section>
 
         {/* 使用你创建的服务组件 */}
         <ServiceComponent services={services} />
@@ -55,23 +58,27 @@ export default async function Home({ params }) {
         </div>
 
         <section className="mb-16">
-        {coreServices.map((service, index) => (
-          <div key={index}>
-            <CoreServiceCard
-              imgLeft={index % 2 === 0} // 根据索引值判断图片位置
-              title={service.title} // 获取 title
-              description={service.description} // 获取 description
-              // 拼接完整的图片 URL
-              imageSrc={`${process.env.NEXT_PUBLIC_API_URL}${service.image || '/default-image.jpg'}`}
-              imageAlt={service.title} // 使用 title 作为 alt 文本
-              widthRatio={service.widthRatio} // 传递 widthRatio
-            />
-            <div className="flex w-full justify-center">
-              <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
-            </div>
-          </div>
-        ))}
-      </section>
+  {coreServices.map((service, index) => (
+    <div key={index}>
+      <CoreServiceCard
+        imgLeft={false} // 根据索引值判断图片位置
+        title={service.title} // 获取 title
+        description={service.description} // 获取 description
+        // 拼接完整的图片 URL
+        imageSrc={`${process.env.NEXT_PUBLIC_API_URL}${service.image || '/default-image.jpg'}`}
+        imageAlt={service.title} // 使用 title 作为 alt 文本
+        widthRatio={service.widthRatio} // 传递 widthRatio
+      />
+      {/* 只有在不是最后一个元素时才显示 Separator */}
+      {index < coreServices.length - 1 && (
+        <div className="flex w-full justify-center">
+          <Separator className="my-10 h-[1px] w-[95%] bg-primary justify-center" />
+        </div>
+      )}
+    </div>
+  ))}
+</section>
+
       </div>
     </div>
   );

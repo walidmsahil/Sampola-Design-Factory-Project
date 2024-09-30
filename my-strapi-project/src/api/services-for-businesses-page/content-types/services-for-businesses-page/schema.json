@@ -20,6 +20,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::hero-section.hero-section"
+    },
+    "services_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::services-section.services-section"
     }
   }
 }

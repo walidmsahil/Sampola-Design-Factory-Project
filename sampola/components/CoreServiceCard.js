@@ -10,7 +10,8 @@ export default function CoreServiceCard({
   imgLeft = true, 
   widthRatio = 'two-thirds-one-third' // 默认使用 'two-thirds-one-third'
 }) {
-
+  console.log('CoreServiceCard', imageSrc);
+  
   // 宽度比例映射
   const widthMapping = {
     'half-half': {
@@ -33,16 +34,20 @@ export default function CoreServiceCard({
     <Card className="border-0 shadow-none overflow-hidden">
       <div className="flex flex-col md:flex-row">
         {/* Text content */}
-        <div className={`${imgLeft ? `${textWidthClass} order-2` : textWidthClass} py-6`}>
+        <div className={`${imgLeft ? `${textWidthClass} xl:order-2` : `${textWidthClass} xl:pr-60`} py-8 md:py-10  lg:px-6 md:px-10 flex flex-col`}>
           <CardHeader>
-            <CardTitle className="text-4xl font-bold text-primary dark:text-[#C0CFB2]">{title}</CardTitle>
+            <CardTitle className="text-4xl font-bold text-primary dark:text-[#C0CFB2] mb-6 leading-relaxed">
+              {title}
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            <p className="mb-4">{description}</p>
-            <p className="flex justify-center w-full mt-8">
+          <CardContent className="flex-grow flex flex-col justify-between">
+            <p className="mb-6 text-lg leading-loose ">
+              {description}
+            </p>
+            <p className="flex justify-start w-full mt-8">
               <Link
                 href={`/services/services-for-businesses`}
-                className="bg-button-green dark:hover:bg-[#C0CFB2] dark:hover:text-[#151515] text-[#F5F7EE] dark:text-[#C0CFB2] px-6 py-2 rounded-full hover:bg-button-hover transition duration-300 flex items-center justify-center"
+                className="bg-button-green dark:hover:bg-[#C0CFB2] dark:hover:text-[#151515] text-[#F5F7EE] dark:text-[#C0CFB2] px-8 py-3 rounded-full hover:bg-button-hover transition duration-300 flex items-center justify-center"
               >
                 Learn more
               </Link>
@@ -51,7 +56,7 @@ export default function CoreServiceCard({
         </div>
 
         {/* Image */}
-        <div className={`${imgLeft ? `order-1 ${imageWidthClass}` : imageWidthClass} p-6 flex items-center justify-center -z-10`}>
+        <div className={`${imgLeft ? `xl:order-1 ${imageWidthClass}` : imageWidthClass} lg:p-6 flex items-center justify-center`}>
           <div className="relative w-full h-96">
             <Image
               src={imageSrc}

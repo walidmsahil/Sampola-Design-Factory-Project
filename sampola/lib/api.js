@@ -89,21 +89,6 @@ export async function getData(locale) {
 
 
 // 获取 core_service_sections 数据的 API 函数
-export async function getCoreServiceSectionsData(locale) {
-  try {
-    // console.log('Fetching Core Service Sections with locale:', locale);
-    
-    // 从 core_service_sections 直接调取数据，指定语言和图片填充
-    const res = await apiClient.get(`/api/core-service-sections?populate=image&locale=${locale}`);
-    // 返回 core_service_sections 的数据
-    return res.data.data;
-  } catch (error) {
-    console.error('Error fetching core service sections data:', error);
-    return [];
-  }
-}
-
-// 获取 core_service_sections 数据的 API 函数
 export async function getHomePageData(locale) {
   try {
     const res = await apiClient.get(`http://localhost:1337/api/home-page?locale=${locale}&populate[hero_section][populate]=*&populate[services_sections]=*&populate[core_service_sections][populate]=*`);
@@ -187,26 +172,157 @@ export async function getServicesForMunicipalSectorPageData(locale) {
 }
 
 
+
 export async function getServicesForBusinessesPageData(locale) {
   try {
-    const res = await apiClient.get(`http://localhost:1337/api/services-for-businesses-page?locale=${locale}&populate[hero_section][populate]=*`);
+    const res = await apiClient.get(`http://localhost:1337/api/services-for-businesses-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
     const data = res.data.data?.attributes || {};
 
-    // 解构出所需字段，并为每个字段提供默认值
-    const { hero_section} = data;
-    console.log('hero_section', JSON.stringify(hero_section));
-    
-    // 将数据整理为一个干净的对象返回
-    return {
+    // 解构 hero_section 数据
+    const { hero_section, services_sections } = data;
+
+    // 处理 hero_section 数据
+    const heroSection = {
       welcomeTitle: hero_section?.data?.attributes?.welcome_title || '',
       subtitle: hero_section?.data?.attributes?.subtitle || '',
       ctaButtonText: hero_section?.data?.attributes?.cta_button_text || '',
       ctaButtonLink: hero_section?.data?.attributes?.cta_button_link || '',
       backgroundImage: `${process.env.NEXT_PUBLIC_API_URL}${hero_section?.data?.attributes?.background_image?.data?.attributes?.url || '/default-image.jpg'}`,
     };
+
+
+    // 处理 services_sections 数据
+    const servicesSections = services_sections?.data?.map((section) => ({
+      title: section?.attributes?.service_title || '',
+      description: section?.attributes?.description || '',
+      iconText: section?.attributes?.icon_text || '',
+      ctaButtonText: section?.attributes?.cta_button_text || '',
+      ctaButtonLink: section?.attributes?.cta_button_link || '',
+      pageUrl: section?.attributes?.page_url || '',
+      order: section?.attributes?.order || 0,
+      iconImage: `${process.env.NEXT_PUBLIC_API_URL}${section?.attributes?.icon_img?.data?.attributes?.formats?.medium?.url || 
+                 section?.attributes?.icon_img?.data?.attributes?.formats?.thumbnail?.url || 
+                 '/default-icon.jpg'}`,
+    })) || [];
+
+    // 返回整理后的数据
+    return {
+      heroSection,
+      servicesSections,
+    };
   } catch (error) {
-    console.error('Error fetching core home page data:', error);
-    return {};
+    console.error('Error fetching Services for Municipal Sector page data:', error);
+    return {
+      heroSection: {},
+      servicesSections: [],
+    };
   }
 }
 
+export async function getServicesForAboutPageData(locale) {
+  try {
+    const res = await apiClient.get(`http://localhost:1337/api/about?populate[hero_section][populate]=*&populate[core-service-sections][populate]=image&locale=${locale}`);
+    const data = res.data.data?.attributes || {};
+
+    // 解构 hero_section 数据
+    const { hero_section, services_sections } = data;
+
+    // 处理 hero_section 数据
+    const heroSection = {
+      welcomeTitle: hero_section?.data?.attributes?.welcome_title || '',
+      subtitle: hero_section?.data?.attributes?.subtitle || '',
+      ctaButtonText: hero_section?.data?.attributes?.cta_button_text || '',
+      ctaButtonLink: hero_section?.data?.attributes?.cta_button_link || '',
+      backgroundImage: `${process.env.NEXT_PUBLIC_API_URL}${hero_section?.data?.attributes?.background_image?.data?.attributes?.url || '/default-image.jpg'}`,
+    };
+
+
+    // 处理 services_sections 数据
+    const servicesSections = services_sections?.data?.map((section) => ({
+      title: section?.attributes?.service_title || '',
+      description: section?.attributes?.description || '',
+      iconText: section?.attributes?.icon_text || '',
+      ctaButtonText: section?.attributes?.cta_button_text || '',
+      ctaButtonLink: section?.attributes?.cta_button_link || '',
+      pageUrl: section?.attributes?.page_url || '',
+      order: section?.attributes?.order || 0,
+      iconImage: `${process.env.NEXT_PUBLIC_API_URL}${section?.attributes?.icon_img?.data?.attributes?.formats?.medium?.url || 
+                 section?.attributes?.icon_img?.data?.attributes?.formats?.thumbnail?.url || 
+                 '/default-icon.jpg'}`,
+    })) || [];
+
+    // 返回整理后的数据
+    return {
+      heroSection,
+      servicesSections,
+    };
+  } catch (error) {
+    console.error('Error fetching Services for Municipal Sector page data:', error);
+    return {
+      heroSection: {},
+      servicesSections: [],
+    };
+  }
+}
+
+
+export async function getServicesForCustomersPageData(locale) {
+  try {
+    const res = await apiClient.get(`http://localhost:1337/api/services-for-customers-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
+    const data = res.data.data?.attributes || {};
+
+    // 解构 hero_section 数据
+    const { hero_section, services_sections } = data;
+
+    // 处理 hero_section 数据
+    const heroSection = {
+      welcomeTitle: hero_section?.data?.attributes?.welcome_title || '',
+      subtitle: hero_section?.data?.attributes?.subtitle || '',
+      ctaButtonText: hero_section?.data?.attributes?.cta_button_text || '',
+      ctaButtonLink: hero_section?.data?.attributes?.cta_button_link || '',
+      backgroundImage: `${process.env.NEXT_PUBLIC_API_URL}${hero_section?.data?.attributes?.background_image?.data?.attributes?.url || '/default-image.jpg'}`,
+    };
+
+
+    // 处理 services_sections 数据
+    const servicesSections = services_sections?.data?.map((section) => ({
+      title: section?.attributes?.service_title || '',
+      description: section?.attributes?.description || '',
+      iconText: section?.attributes?.icon_text || '',
+      ctaButtonText: section?.attributes?.cta_button_text || '',
+      ctaButtonLink: section?.attributes?.cta_button_link || '',
+      pageUrl: section?.attributes?.page_url || '',
+      order: section?.attributes?.order || 0,
+      iconImage: `${process.env.NEXT_PUBLIC_API_URL}${section?.attributes?.icon_img?.data?.attributes?.formats?.medium?.url || 
+                 section?.attributes?.icon_img?.data?.attributes?.formats?.thumbnail?.url || 
+                 '/default-icon.jpg'}`,
+    })) || [];
+
+    // 返回整理后的数据
+    return {
+      heroSection,
+      servicesSections,
+    };
+  } catch (error) {
+    console.error('Error fetching Services for Municipal Sector page data:', error);
+    return {
+      heroSection: {},
+      servicesSections: [],
+    };
+  }
+}
+
+// 获取 core_service_sections 数据的 API 函数
+export async function getCoreServiceSectionsData(locale) {
+  try {
+    // console.log('Fetching Core Service Sections with locale:', locale);
+    
+    // 从 core_service_sections 直接调取数据，指定语言和图片填充
+    const res = await apiClient.get(`/api/core-service-sections?populate=image&locale=${locale}`);
+    // 返回 core_service_sections 的数据
+    return res.data.data;
+  } catch (error) {
+    console.error('Error fetching core service sections data:', error);
+    return [];
+  }
+}

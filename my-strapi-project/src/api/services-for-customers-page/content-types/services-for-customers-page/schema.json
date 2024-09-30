@@ -1,20 +1,21 @@
 {
   "kind": "singleType",
-  "collectionName": "abouts",
+  "collectionName": "services_for_customers_pages",
   "info": {
-    "singularName": "about",
-    "pluralName": "abouts",
-    "displayName": "AboutPage",
+    "singularName": "services-for-customers-page",
+    "pluralName": "services-for-customers-pages",
+    "displayName": "ServicesForCustomersPage",
     "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
-    "Title": {
-      "type": "string"
-    },
     "core_service_sections": {
       "type": "relation",
       "relation": "oneToMany",
@@ -24,6 +25,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::hero-section.hero-section"
+    },
+    "services_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::services-section.services-section"
     }
   }
 }

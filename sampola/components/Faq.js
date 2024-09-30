@@ -33,14 +33,14 @@ export default function FAQSection() {
   const loadMore = () => {
     setVisibleItems(prevItems => Math.min(prevItems + 3, faqItems.length))
   }
-
+  
   return (
     <section className="mb-16">
-      <h2 className="text-3xl font-bold mb-8 text-primary">Frequently Asked Questions</h2>
+      <h2 className="text-3xl mb-8 font-bold text-primary dark:text-[#C0CFB2]">Frequently Asked Questions</h2>
       <Accordion type="single" collapsible className="w-full">
         {faqItems.slice(0, visibleItems).map((item, index) => (
           <AccordionItem key={index} value={`item-${index + 1}`} className="border-b border-gray-200">
-            <AccordionTrigger className="text-lg font-semibold text-primary text-left">{item.question}</AccordionTrigger>
+            <AccordionTrigger className="text-lg font-semibold text-primary text-left dark:text-[#F5F7EE]">{item.question}</AccordionTrigger>
             <AccordionContent>
               {item.answer}
             </AccordionContent>
@@ -49,7 +49,7 @@ export default function FAQSection() {
       </Accordion>
       {visibleItems < faqItems.length && (
         <div className="mt-8 text-center">
-          <Button onClick={loadMore} className="bg-primary-dark rounded-full hover:bg-primary-light text-[#F5F7EE]">
+          <Button onClick={loadMore} className="bg-primary hover:dark:bg-primary hover:dark:text-[#C0CFB2] dark:bg-[#C0CFB2] hover:bg-[#C0CFB2] text-[#F5F7EE] dark:text-[#151515] hover:text-[#151515] px-6 py-2 rounded-full transition duration-300 select-none">
             Load More
           </Button>
         </div>
