@@ -6,12 +6,12 @@ import { useParams } from 'next/navigation';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import { Separator } from './ui/Separator';
-export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgroundImage,bgColor='',showSeparator=true }) {
+export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgroundImage, bgColor = '', showSeparator = true }) {
   const params = useParams();
   const locale = params.locale;
   const { theme } = useTheme(); // 获取当前主题
-  console.log('backgroundImage', backgroundImage);  
-  
+  console.log('backgroundImage', backgroundImage);
+
 
   // 使用 useState 解决水合不匹配问题
   const [isClient, setIsClient] = useState(false);
@@ -40,7 +40,7 @@ export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgro
             )}
           </div>
         </div>
-        <div className={`text-center py-12 ${bgColor} `}>
+        <div className={`flex flex-col items-center justify-center py-12 ${bgColor}`}>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-primary dark:text-[#617968]">
             {title}
           </h1>
@@ -51,17 +51,18 @@ export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgro
           {ctaText && (
             <Link
               href={`/${locale}/${ctaLink}`}
-              className="bg-primary hover:dark:bg-primary hover:dark:text-[#C0CFB2] dark:bg-[#C0CFB2] hover:bg-[#C0CFB2] text-[#F5F7EE] dark:text-[#151515] hover:text-[#151515] px-6 py-2 rounded-full transition duration-300 select-none"
+              className="bg-primary hover:bg-[#C0CFB2] hover:text-[#151515] dark:bg-[#C0CFB2] dark:text-[#151515] dark:hover:bg-primary dark:hover:text-[#C0CFB2] text-[#F5F7EE] px-6 py-2 rounded-full transition duration-300 select-none"
             >
               {ctaText}
             </Link>
           )}
         </div>
+
         {showSeparator && (
-            <div className="flex w-full justify-center">
+          <div className="flex w-full justify-center">
             <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
           </div>
-          )}
+        )}
       </section>
     </div>
   );
