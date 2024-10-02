@@ -1,11 +1,6 @@
 'use client';
-import Image from "next/image"
 import { Separator } from "@/components/ui/Separator"
-import { useTheme } from "next-themes";
 export default function Footer() {
-  const { theme } = useTheme(); // 获取当前主题
-  const logoSrc = theme === "dark" ? "/icons/sampolaLogoGreen-textwhite.svg" : "/icons/sampolaLogoGreen-textblack.svg"; // 动态选择图片
-
   return (
     <footer className=" py-12 px-4">
       <div className="flex w-full justify-center">
@@ -68,12 +63,11 @@ export default function Footer() {
           </ul>
         </div>
         <div className=" md:w-auto flex items-end justify-end order-4">
-          <Image
-            src={logoSrc} // 根据主题动态加载图片
-            alt="Sampola Logo"
-            width={200}
-            height={75}
-          />
+          <div
+            className="w-[200px] h-[60px] bg-contain bg-no-repeat"
+            style={{ backgroundImage: 'var(--footer-logo-url)' }}
+            aria-label="Footer Logo"
+          ></div>
         </div>
       </div>
     </footer>

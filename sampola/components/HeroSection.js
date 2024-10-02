@@ -40,7 +40,7 @@ export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgro
             )}
           </div>
         </div>
-        <div className={`flex flex-col items-center justify-center py-12 ${bgColor}`}>
+        <div className={`flex flex-col items-center justify-center py-12 px-6 text-center ${bgColor}`}>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-primary dark:text-[#617968]">
             {title}
           </h1>

@@ -8,6 +8,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			backgroundImage: {
+				'footer-background': 'url(var(--footer-background-url))', // Use CSS variable for the background image URL
+			},
 			fontSize: {
 				xs: 'calc(var(--font-size) * 0.75)',
 				sm: 'calc(var(--font-size) * 0.875)',
