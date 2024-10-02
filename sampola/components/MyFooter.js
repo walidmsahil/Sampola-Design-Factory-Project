@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className=" py-12 px-4">
       <div className="flex w-full justify-center">
-        <Separator className="mb-20 h-[2px] w-[95%] bg-primary justify-center " />
+        <Separator className="mb-20 h-[2px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2] " />
       </div>
       <div className="container mx-auto flex flex-wrap justify-between px-6 md:px-12">
         <div className="w-full md:w-1/4 mb-6 md:mb-0 order-4 md:order-1">

@@ -10,7 +10,7 @@ export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgro
   const params = useParams();
   const locale = params.locale;
   const { theme } = useTheme(); // 获取当前主题
-  console.log('backgroundImage', backgroundImage);
+  // console.log('backgroundImage', backgroundImage);
 
 
   // 使用 useState 解决水合不匹配问题
@@ -60,7 +60,7 @@ export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgro
 
         {showSeparator && (
           <div className="flex w-full justify-center">
-            <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center " />
+            <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2] " />
           </div>
         )}
       </section>

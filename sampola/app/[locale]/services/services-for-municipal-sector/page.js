@@ -60,7 +60,7 @@ export default async function ServicesForMunicipalSector({ params }) {
                   {/* Insert Separator after every two ServiceCards except the last two */}
                   {index + 1 < servicesSections.length - 1 && (index) % 2 === 0 && (
                     <div key={`separator-${index}`} className="flex justify-center">
-                      <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center" />
+                      <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2]" />
                     </div>
                   )}
                 </div>

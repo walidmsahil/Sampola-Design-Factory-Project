@@ -39,7 +39,7 @@ export default function FAQSection() {
       <h2 className="text-3xl mb-8 font-bold text-primary dark:text-[#C0CFB2]">Frequently Asked Questions</h2>
       <Accordion type="single" collapsible className="w-full">
         {faqItems.slice(0, visibleItems).map((item, index) => (
-          <AccordionItem key={index} value={`item-${index + 1}`} className="border-b border-gray-200">
+          <AccordionItem key={index} value={`item-${index + 1}`} className="border-b border-[#C0CFB2]">
             <AccordionTrigger className="text-lg font-semibold text-primary text-left dark:text-[#F5F7EE]">{item.question}</AccordionTrigger>
             <AccordionContent>
               {item.answer}

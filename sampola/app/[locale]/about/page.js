@@ -1,4 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link";
 import Image from "next/image";
 import { getCoreServiceSectionsData } from '@/lib/api'; 
 import HeroSection from '@/components/HeroSection';
@@ -198,6 +200,54 @@ export default async function ServicesForAbout({ params: { locale } }) {
         <AboutClientSideComponent coreServices={services} />
         
         <Faq />
+        {/* Success Stories Section */}
+      <section>
+        <h2 className="text-3xl font-bold mb-8 text-primary dark:text-[#C0CFB2]">Sampola's Success Stories</h2>
+        <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-8">
+          <Card className="border-0 shadow-lg overflow-hidden">
+            <Image
+              src="/images/image18.webp" // Placeholder image
+              alt="Success story 3"
+              width={400}
+              height={250}
+              className="w-full  md:h-72 h-48 object-cover"
+            />
+            <CardContent className="p-6">
+              <h3 className="text-xl font-bold mb-2 dark:text-[#C0CFB2] text-primary">Work Support in the Community</h3>
+              <p className="mb-4">With Sampola's help, many individuals with disabilities have found meaningful work, boosting their confidence and improving their lives.</p>
+              <Link href="#" className="text-primary dark:text-[#C0CFB2] hover:underline">Read More</Link>
+            </CardContent>
+          </Card>
+          <Card className="border-0 shadow-lg overflow-hidden">
+            <Image
+              src="/images/image35.jpeg" // Placeholder image
+              alt="Success story 2"
+              width={400}
+              height={250}
+              className="w-full  md:h-72 h-48 object-cover"
+            />
+            <CardContent className="p-6">
+              <h3 className="text-xl font-bold mb-2 dark:text-[#C0CFB2] text-primary">Success in Recycling Projects</h3>
+              <p className="mb-4">Sampola's recycling projects have transformed old advertising materials into eco-friendly products, earning praise from businesses and the community.</p>
+              <Link href="#" className="text-primary dark:text-[#C0CFB2] hover:underline">Read More</Link>
+            </CardContent>
+          </Card>
+          <Card className="border-0 shadow-lg overflow-hidden">
+            <Image
+              src="/images/image17.png" // Placeholder image
+              alt="Success story 3"
+              width={400}
+              height={250}
+              className="w-full  md:h-72 h-48 object-cover"
+            />
+            <CardContent className="p-6">
+              <h3 className="text-xl font-bold mb-2 dark:text-[#C0CFB2] text-primary">Outsourcing Services for Businesses</h3>
+              <p className="mb-4">Through partnerships with local businesses, Sampola provides high-quality outsourcing services that help companies save costs while meeting their social responsibility commitments.</p>
+              <Link href="#" className="text-primary dark:text-[#C0CFB2] hover:underline">Read More</Link>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ export default function ServicesForCustomers() {
         </h1>
 
         <div className="flex w-full justify-center">
-          <Separator className="my-4 h-[2px] w-[95%] bg-primary justify-center" />
+          <Separator className="my-4 h-[2px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2]" />
         </div>
 
         {/* Upholstery and restoration section */}
@@ -35,7 +35,7 @@ export default function ServicesForCustomers() {
         </div>
 
         <div className="flex w-full justify-center">
-          <Separator className="my-4 h-[2px] w-[95%] bg-primary justify-center" />
+          <Separator className="my-4 h-[2px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2]" />
         </div>
 
         {/* Workshop Shop Sampola */}
@@ -47,7 +47,7 @@ export default function ServicesForCustomers() {
         </div>
 
         <div className="flex w-full justify-center">
-          <Separator className="my-4 h-[2px] w-[95%] bg-primary justify-center" />
+          <Separator className="my-4 h-[2px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2]" />
         </div>
 
         {/* Categories Section */}

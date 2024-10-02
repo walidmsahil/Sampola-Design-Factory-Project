@@ -22,7 +22,7 @@ export default function AboutClientSideComponent({ coreServices }) {
             imageAlt={service.attributes.title}
           />
           <div className="flex w-full justify-center">
-            <Separator className="my-10 h-1px w-[95%] bg-primary justify-center " />
+            <Separator className="my-10 h-1px w-[100%] bg-primary justify-center dark:bg-[#C0CFB2] " />
           </div>
         </motion.div>
       ))}

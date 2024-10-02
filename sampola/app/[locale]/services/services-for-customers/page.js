@@ -45,7 +45,7 @@ export default async function ServicesForCustomers({ params }) {
         </div>
 
         <div className="flex w-full justify-center">
-          <Separator className="my-4 h-[1px] w-[95%] bg-primary  transition-colors duration-300" />
+          <Separator className="my-4 h-[1px] w-[100%] bg-primary dark:bg-[#C0CFB2]  transition-colors duration-300" />
         </div>
 
         {/* Workshop Shop Sampola */}
@@ -74,7 +74,7 @@ export default async function ServicesForCustomers({ params }) {
                 {/* 只有在不是最后一个元素时才显示 Separator */}
                 {index < servicesSections.length - 1 && (
                   <div className="flex w-full justify-center">
-                    <Separator className="my-10 h-[1px] w-[95%] bg-primary justify-center" />
+                    <Separator className="my-10 h-[1px] w-[100%] bg-primary justify-center dark:bg-[#C0CFB2]" />
                   </div>
                 )}
               </div>
