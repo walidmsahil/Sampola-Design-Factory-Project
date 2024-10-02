@@ -1,6 +1,9 @@
 'use client';
 import { Separator } from "@/components/ui/Separator"
+import { useParams } from 'next/navigation';
 export default function Footer() {
+  const params = useParams();
+  const locale = params.locale;
   return (
     <footer className=" py-12 px-4">
       <div className="flex w-full justify-center">
@@ -56,10 +59,7 @@ export default function Footer() {
         <div className="w-full md:w-1/4 mb-6 md:mb-0 order-3">
           <ul className="space-y-2">
             <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">About us</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Kpsaatio</a></li>
             <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Webshop</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Services for municipal factor</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Contact</a></li>
           </ul>
         </div>
         <div className=" md:w-auto flex items-end justify-end order-4">

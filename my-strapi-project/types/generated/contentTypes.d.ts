@@ -1128,6 +1128,12 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
       'oneToMany',
       'api::core-service-section.core-service-section'
     >;
+    video: Attribute.Media<'videos' | 'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

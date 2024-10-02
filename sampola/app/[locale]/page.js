@@ -1,6 +1,5 @@
 // app/home/page.js
 
-import Image from 'next/image';
 import ServiceComponent from '@/components/ServiceComponent';
 import CoreServiceCard from '@/components/CoreServiceCard';
 import HeroSection from '../../components/HeroSection';
@@ -21,6 +20,7 @@ export default async function Home({ params }) {
     backgroundImage,
     services,
     coreServices,
+    video
   } = homePageData;
 
   return (
@@ -40,7 +40,7 @@ export default async function Home({ params }) {
         <section className="my-16 flex justify-center">
           <div className="rounded-lg shadow-md overflow-hidden max-w-full w-[1300px] h-[400px] md:h-[600px]">
             <video
-              src="https://video.wixstatic.com/video/c30ba3_d3f982dbdd9e47ae942e06a467947178/1080p/mp4/file.mp4"
+              src={video}
               controls
               autoPlay
               loop
@@ -51,7 +51,7 @@ export default async function Home({ params }) {
         </section>
 
         {/* 使用你创建的服务组件 */}
-        <ServiceComponent services={services} />
+        <ServiceComponent services={services} ctaText={ctaButtonText}/>
 
         <div className="flex w-full justify-center">
           <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2] " />

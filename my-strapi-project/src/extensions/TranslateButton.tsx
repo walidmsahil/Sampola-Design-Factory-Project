@@ -1,6 +1,7 @@
 import { useCMEditViewDataManager } from '@strapi/helper-plugin';
 import React from 'react';
 import axios from 'axios';
+import { log } from 'console';
 
 const TranslateButton = () => {
   const { modifiedData, slug } = useCMEditViewDataManager();
@@ -9,6 +10,9 @@ const TranslateButton = () => {
   const apiKey = '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'; // 这里填写你的 API key
 
   // 检查数据是否存在
+  console.log('当前数据:', modifiedData);
+  console.log('当前数据:', slug);
+  return
   if (!modifiedData || !modifiedData.id || !slug) {
     return null; // 如果没有数据，不显示按钮
   }
@@ -39,7 +43,6 @@ const TranslateButton = () => {
       const translatedText = response.data.choices[0].message.content;
       console.log('翻译结果:', translatedText);
 
-      alert(`翻译成功: ${translatedText}`);
       
       // 这里可以添加代码，将翻译后的内容保存回 Strapi
     } catch (error) {

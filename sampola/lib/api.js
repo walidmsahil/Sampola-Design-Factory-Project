@@ -88,14 +88,15 @@ export async function getData(locale) {
 
 
 
-// 获取 core_service_sections 数据的 API 函数
+// 获取 home-page 数据的 API 函数
 export async function getHomePageData(locale) {
   try {
-    const res = await apiClient.get(`http://localhost:1337/api/home-page?locale=${locale}&populate[hero_section][populate]=*&populate[services_sections]=*&populate[core_service_sections][populate]=*`);
+    const res = await apiClient.get(`http://localhost:1337/api/home-page?locale=${locale}&populate[hero_section][populate]=*&populate[services_sections]=*&populate[core_service_sections][populate]=*&populate=video`);
     const data = res.data.data?.attributes || {};
+    console.log(JSON.stringify(data));
 
     // 解构出所需字段，并为每个字段提供默认值
-    const { hero_section, services_sections,core_service_sections } = data;
+    const { hero_section, services_sections, core_service_sections, video } = data;  // 解构出 video 字段
     
     // 将数据整理为一个干净的对象返回
     return {
@@ -117,13 +118,15 @@ export async function getHomePageData(locale) {
         description: coreService.attributes?.description || '',
         image: coreService.attributes?.image?.data?.attributes?.url || '/default-image.jpg',
         widthRatio: coreService.attributes?.widthRatio,
-      })) || []
+      })) || [],
+      video: video?.data?.attributes?.url ? `${process.env.NEXT_PUBLIC_API_URL}${video.data.attributes.url}` : '',
     };
   } catch (error) {
-    console.error('Error fetching core home page data:', error);
+    console.error('Error fetching home page data:', error);
     return {};
   }
 }
+
 
 export async function getServicesForMunicipalSectorPageData(locale) {
   try {
