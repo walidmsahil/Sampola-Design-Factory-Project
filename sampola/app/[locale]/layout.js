@@ -68,7 +68,7 @@ export default async function Layout({ children, params }) {
               <main>{children}</main>
             </ClientLayout>
             <CookieConsentBanner />
-            <Footer className="text-center p-4 mt-8 border-t border-[#4a5c4d]">
+            <Footer className="text-center p-4 mt-8 border-t border-[#4a5c4d]" locale={locale}>
             </Footer>
           </NextIntlClientProvider>
         </ThemeProvider>

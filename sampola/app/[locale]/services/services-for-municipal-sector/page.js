@@ -10,7 +10,7 @@ export default async function ServicesForMunicipalSector({ params }) {
 
   // Fetch data directly in the server component
   const ServicesForMunicipalSectorPageData = await getServicesForMunicipalSectorPageData(locale);
-  console.log('ServicesForMunicipalSectorPageData', JSON.stringify(ServicesForMunicipalSectorPageData));
+  // console.log('ServicesForMunicipalSectorPageData', JSON.stringify(ServicesForMunicipalSectorPageData));
 
   const {
     heroSection,

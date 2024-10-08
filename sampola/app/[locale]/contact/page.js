@@ -9,7 +9,7 @@ export default async function Contact({ params }) {
 
   // Fetch data directly in the server component
   const ContactPageData = await getContactPageData(locale);
-  console.log('ContactPageData', JSON.stringify(ContactPageData));
+  // console.log('ContactPageData', JSON.stringify(ContactPageData));
 
   const {
     heroSection

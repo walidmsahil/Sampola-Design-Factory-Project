@@ -1131,7 +1131,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     video: Attribute.Media<'videos' | 'images'> &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;

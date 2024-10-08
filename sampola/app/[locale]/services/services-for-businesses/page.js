@@ -10,7 +10,7 @@ export default async function ServicesForBusinesses({ params }) {
 
   // Fetch data directly in the server component
   const ServicesForBusinessesPageData = await getServicesForBusinessesPageData(locale);
-  console.log('ServicesForBusinessesPageData', JSON.stringify(ServicesForBusinessesPageData));
+  // console.log('ServicesForBusinessesPageData', JSON.stringify(ServicesForBusinessesPageData));
 
   const {
     heroSection,

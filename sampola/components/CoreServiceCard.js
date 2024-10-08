@@ -10,7 +10,7 @@ export default function CoreServiceCard({
   imgLeft = true, 
   widthRatio = 'two-thirds-one-third' // 默认使用 'two-thirds-one-third'
 }) {
-  console.log('CoreServiceCard', imageSrc);
+  // console.log('CoreServiceCard', imageSrc);
   
   // 宽度比例映射
   const widthMapping = {

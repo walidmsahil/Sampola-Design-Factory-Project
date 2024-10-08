@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import SearchBar from '../SearchBar'
 
 const DesktopNavbar = ({ menuItems, currentLocale }) => {
-  console.log('DesktopNavbar', menuItems);
+  // console.log('DesktopNavbar', menuItems);
 
   const [openIndex, setOpenIndex] = useState(null);
   const handleMouseEnter = (index) => setOpenIndex(index);

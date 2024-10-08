@@ -46,13 +46,13 @@ export async function getNavData(locale) {
 
 // 获取 HTML 数据的 API 函数
 export async function getHTML(locale) {
-  console.log('getHTML', locale);
+  // console.log('getHTML', locale);
   try {
     // 发送 GET 请求，获取指定 locale 的 tester 数据
     const res = await apiClient.get(
       `/api/tester?fields[0]=html&locale=${locale}`
     );
-    console.log('res', res);
+    // console.log('res', res);
     
     // 提取 CKEditor 字段的值
     const ckEditorData = res.data.data?.attributes?.html || null;
@@ -67,13 +67,13 @@ export async function getHTML(locale) {
 
 // 获取 HTML 数据的 API 函数
 export async function getData(locale) {
-  console.log('getData', locale);
+  // console.log('getData', locale);
   try {
     // 发送 GET 请求，获取指定 locale 的 tester 数据
     const res = await apiClient.get(
       `/api/tester?fields[0]=html&locale=${locale}`
     );
-    console.log('res', res);
+    // console.log('res', res);
     
     // 提取 CKEditor 字段的值
     const ckEditorData = res.data.data?.attributes?.html || null;
@@ -93,7 +93,7 @@ export async function getHomePageData(locale) {
   try {
     const res = await apiClient.get(`http://localhost:1337/api/home-page?locale=${locale}&populate[hero_section][populate]=*&populate[services_sections]=*&populate[core_service_sections][populate]=*&populate=video`);
     const data = res.data.data?.attributes || {};
-    console.log(JSON.stringify(data));
+    // console.log(JSON.stringify(data));
 
     // 解构出所需字段，并为每个字段提供默认值
     const { hero_section, services_sections, core_service_sections, video } = data;  // 解构出 video 字段

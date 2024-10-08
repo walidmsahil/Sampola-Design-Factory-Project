@@ -9,7 +9,7 @@ export default async function ServicesForCustomers({ params }) {
 
   // Fetch data directly in the server component
   const ServicesForCustomersPageData = await getServicesForCustomersPageData(locale);
-  console.log('ServicesForCustomersPageData', JSON.stringify(ServicesForCustomersPageData));
+  // console.log('ServicesForCustomersPageData', JSON.stringify(ServicesForCustomersPageData));
 
   const {
     heroSection,
@@ -57,8 +57,8 @@ export default async function ServicesForCustomers({ params }) {
         </div>
 
         {/* Categories Section */}
-        <div className="my-8 p-6 rounded-lg transition-colors duration-300">
-          <h2 className="text-4xl font-bold text-primary dark:text-[#C0CFB2]">Categories</h2>
+        <div className="my-8 rounded-lg transition-colors duration-300">
+          <h2 className="text-4xl ml-6 font-bold text-primary dark:text-[#C0CFB2]">Categories</h2>
 
           <section className="mb-16">
             {servicesSections.map((service, index) => (

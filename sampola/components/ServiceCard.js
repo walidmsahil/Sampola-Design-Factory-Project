@@ -16,10 +16,11 @@ export default function ServiceCard({
           <Image
             src={imageSrc}
             alt={imageAlt}
-            layout="fill"
-            objectFit="cover"
+            // layout="fill"
+            fill
+            // objectFit="cover"
             objectPosition="center"
-            className="rounded-xl shadow-lg"
+            className="rounded-xl shadow-lg object-cover"
           />
         </div>
       </div>

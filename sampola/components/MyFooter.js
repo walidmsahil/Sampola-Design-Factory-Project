@@ -1,9 +1,8 @@
-'use client';
 import { Separator } from "@/components/ui/Separator"
-import { useParams } from 'next/navigation';
-export default function Footer() {
-  const params = useParams();
-  const locale = params.locale;
+import Link from 'next/link';
+export default function Footer({locale}) {
+  console.log('locale:', locale);
+  
   return (
     <footer className=" py-12 px-4">
       <div className="flex w-full justify-center">
@@ -48,18 +47,46 @@ export default function Footer() {
         </div>
 
         <div className="w-full md:w-1/4 mb-6 md:mb-0 order-2">
-          <ul className="space-y-2">
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Home</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Services for consumers</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Services for companies</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Services for municipal factor</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Contact</a></li>
+        <ul className="space-y-2">
+            <li>
+              <Link href="/" locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/services/services-for-customers`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
+                Services for customers
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/services/services-for-businesses`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
+                Services for businesses
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/services/services-for-municipal-sector`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
+                Services for municipal sector
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/contact`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="w-full md:w-1/4 mb-6 md:mb-0 order-3">
           <ul className="space-y-2">
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">About us</a></li>
-            <li><a href="#" className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">Webshop</a></li>
+            <li>
+              <Link href={`/${locale}/about`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
+                About us
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/shop`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
+                Webshop
+              </Link>
+            </li>
           </ul>
         </div>
         <div className=" md:w-auto flex items-end justify-end order-4">
