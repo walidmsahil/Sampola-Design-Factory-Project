@@ -55,7 +55,7 @@
       },
       "type": "string",
       "default": "Learn more",
-      "required": true
+      "required": false
     },
     "cta_button_link": {
       "pluginOptions": {

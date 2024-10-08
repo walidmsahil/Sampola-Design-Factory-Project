@@ -30,6 +30,20 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::core-service-section.core-service-section"
+    },
+    "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "videos",
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

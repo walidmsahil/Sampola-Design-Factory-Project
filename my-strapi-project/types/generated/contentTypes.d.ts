@@ -806,6 +806,11 @@ export interface ApiAboutAbout extends Schema.SingleType {
       'oneToMany',
       'api::core-service-section.core-service-section'
     >;
+    hero_section: Attribute.Relation<
+      'api::about.about',
+      'oneToOne',
+      'api::hero-section.hero-section'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -821,6 +826,122 @@ export interface ApiAboutAbout extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface ApiContactInformationContactInformation
+  extends Schema.CollectionType {
+  collectionName: 'contact_informations';
+  info: {
+    singularName: 'contact-information';
+    pluralName: 'contact-informations';
+    displayName: 'ContactInformation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    line_1: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    line_2: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    line_3: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    line_4: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-information.contact-information',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-information.contact-information',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::contact-information.contact-information',
+      'oneToMany',
+      'api::contact-information.contact-information'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiContactPageContactPage extends Schema.SingleType {
+  collectionName: 'contact_pages';
+  info: {
+    singularName: 'contact-page';
+    pluralName: 'contact-pages';
+    displayName: 'ContactPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    hero_section: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'api::hero-section.hero-section'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToMany',
+      'api::contact-page.contact-page'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -929,7 +1050,6 @@ export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
         };
       }>;
     cta_button_text: Attribute.String &
-      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1008,6 +1128,12 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
       'oneToMany',
       'api::core-service-section.core-service-section'
     >;
+    video: Attribute.Media<'videos' | 'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1124,7 +1250,7 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     parent: Attribute.Relation<
@@ -1169,6 +1295,167 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
       'api::navigation.navigation',
       'oneToMany',
       'api::navigation.navigation'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiServicesForBusinessesPageServicesForBusinessesPage
+  extends Schema.SingleType {
+  collectionName: 'services_for_businesses_pages';
+  info: {
+    singularName: 'services-for-businesses-page';
+    pluralName: 'services-for-businesses-pages';
+    displayName: 'ServicesForBusinessesPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    hero_section: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToOne',
+      'api::hero-section.hero-section'
+    >;
+    services_sections: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToMany',
+      'api::services-section.services-section'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::services-for-businesses-page.services-for-businesses-page',
+      'oneToMany',
+      'api::services-for-businesses-page.services-for-businesses-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiServicesForCustomersPageServicesForCustomersPage
+  extends Schema.SingleType {
+  collectionName: 'services_for_customers_pages';
+  info: {
+    singularName: 'services-for-customers-page';
+    pluralName: 'services-for-customers-pages';
+    displayName: 'ServicesForCustomersPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    core_service_sections: Attribute.Relation<
+      'api::services-for-customers-page.services-for-customers-page',
+      'oneToMany',
+      'api::core-service-section.core-service-section'
+    >;
+    hero_section: Attribute.Relation<
+      'api::services-for-customers-page.services-for-customers-page',
+      'oneToOne',
+      'api::hero-section.hero-section'
+    >;
+    services_sections: Attribute.Relation<
+      'api::services-for-customers-page.services-for-customers-page',
+      'oneToMany',
+      'api::services-section.services-section'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::services-for-customers-page.services-for-customers-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::services-for-customers-page.services-for-customers-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::services-for-customers-page.services-for-customers-page',
+      'oneToMany',
+      'api::services-for-customers-page.services-for-customers-page'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiServicesForMunicipalSectorPageServicesForMunicipalSectorPage
+  extends Schema.SingleType {
+  collectionName: 'services_for_municipal_sector_pages';
+  info: {
+    singularName: 'services-for-municipal-sector-page';
+    pluralName: 'services-for-municipal-sector-pages';
+    displayName: 'ServicesForMunicipalSectorPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    hero_section: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToOne',
+      'api::hero-section.hero-section'
+    >;
+    services_sections: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToMany',
+      'api::services-section.services-section'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page',
+      'oneToMany',
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page'
     >;
     locale: Attribute.String;
   };
@@ -1238,6 +1525,18 @@ export interface ApiServicesSectionServicesSection
         };
       }> &
       Attribute.DefaultTo<'/'>;
+    order: Attribute.Integer &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1268,12 +1567,14 @@ export interface ApiTestTest extends Schema.CollectionType {
     singularName: 'test';
     pluralName: 'tests';
     displayName: 'test';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     title: Attribute.String;
+    test: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1303,11 +1604,16 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
+      'api::contact-information.contact-information': ApiContactInformationContactInformation;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::core-service-section.core-service-section': ApiCoreServiceSectionCoreServiceSection;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::main-image-section.main-image-section': ApiMainImageSectionMainImageSection;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::services-for-businesses-page.services-for-businesses-page': ApiServicesForBusinessesPageServicesForBusinessesPage;
+      'api::services-for-customers-page.services-for-customers-page': ApiServicesForCustomersPageServicesForCustomersPage;
+      'api::services-for-municipal-sector-page.services-for-municipal-sector-page': ApiServicesForMunicipalSectorPageServicesForMunicipalSectorPage;
       'api::services-section.services-section': ApiServicesSectionServicesSection;
       'api::test.test': ApiTestTest;
     }

@@ -3,42 +3,66 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-
-export default function HeroSection() {
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { Separator } from './ui/Separator';
+export default function HeroSection({ title, subtitle, ctaText, ctaLink, backgroundImage, bgColor = '', showSeparator = true }) {
   const params = useParams();
   const locale = params.locale;
+  const { theme } = useTheme(); // 获取当前主题
+  // console.log('backgroundImage', backgroundImage);
+
+
+  // 使用 useState 解决水合不匹配问题
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div className="w-full">
-      <section className="hero ">
+      <section className="hero">
         <div className="relative select-none">
-          {/* 使用动态的高度，屏幕越宽，高度越大 */}
-          <div className="relative w-full h-[80vw] md:h-[40vw] lg:h-[35vw] xl:h-[30vw]"> {/* 使用vw来动态控制高度 */}
-          <Image
-            src="/images/feeling (12).jpg"
-            alt="Welcome to Sampola"
-            fill // 等效于 layout="fill"
-            style={{ objectFit: 'cover', objectPosition: 'center' }} // 使用 style 替代 objectFit 和 objectPosition
-          />
-
-            <div className="absolute inset-0 bg-gradient-to-b from-[rgba(255,255,255,0.55)] to-[rgba(255,255,255,0.1)] backdrop-blur-[0.6px]"></div>
+          <div
+            className="relative w-full h-[80vw] md:h-[40vw] lg:h-[35vw] xl:h-[30vw]"
+            suppressHydrationWarning={true}
+          >
+            <Image
+              src={backgroundImage}
+              alt={title}
+              fill
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+            />
+            {/* 仅在非dark模式下渲染该背景渐变层 */}
+            {isClient && theme !== 'dark' && (
+              <div className="absolute inset-0 bg-gradient-to-b from-[rgba(255,255,255,0.3)] to-[rgba(255,255,255,0.1)] backdrop-blur-[0.6px]"></div>
+            )}
           </div>
         </div>
-        <div className="text-center py-12 bg-[#F5F7EE] dark:bg-[#353533]">
+        <div className={`flex flex-col items-center justify-center py-12 px-6 text-center ${bgColor}`}>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 text-primary dark:text-[#617968]">
-            Welcome to Sampola
+            {title}
           </h1>
           <p className="text-lg md:text-xl mb-8 py-4">
-            We offer local services and quality products
+            {subtitle}
           </p>
-          <Link
-            href={`/${locale}/about`}
-            className="bg-primary dark:bg-[#C0CFB2] hover:bg-[#C0CFB2] text-[#F5F7EE] dark:text-[#151515] hover:text-[#151515] px-6 py-2 rounded-full  transition duration-300 select-none"
-          >
-            Learn more
-          </Link>
+          {/* 仅当 ctaText 存在时渲染 Link */}
+          {ctaText && (
+            <Link
+              href={`/${locale}/${ctaLink}`}
+              className="bg-primary hover:bg-[#C0CFB2] hover:text-[#151515] dark:bg-[#C0CFB2] dark:text-[#151515] dark:hover:bg-primary dark:hover:text-[#C0CFB2] text-[#F5F7EE] px-6 py-2 rounded-full transition duration-300 select-none"
+            >
+              {ctaText}
+            </Link>
+          )}
         </div>
 
+        {showSeparator && (
+          <div className="flex w-full justify-center">
+            <Separator className="my-10 h-1px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2] " />
+          </div>
+        )}
       </section>
     </div>
   );

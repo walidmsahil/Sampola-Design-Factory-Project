@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "services_for_businesses_pages",
+  "info": {
+    "singularName": "services-for-businesses-page",
+    "pluralName": "services-for-businesses-pages",
+    "displayName": "ServicesForBusinessesPage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "hero_section": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero-section.hero-section"
+    },
+    "services_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::services-section.services-section"
+    }
+  }
+}

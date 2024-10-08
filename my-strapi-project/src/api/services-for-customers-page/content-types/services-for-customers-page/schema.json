@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "services_for_customers_pages",
+  "info": {
+    "singularName": "services-for-customers-page",
+    "pluralName": "services-for-customers-pages",
+    "displayName": "ServicesForCustomersPage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "core_service_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::core-service-section.core-service-section"
+    },
+    "hero_section": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::hero-section.hero-section"
+    },
+    "services_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::services-section.services-section"
+    }
+  }
+}
