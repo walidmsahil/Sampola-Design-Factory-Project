@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { useTranslations } from "next-intl"; // Import the translation hook
 
 export default function CoreServiceCard({ 
   title, 
@@ -10,8 +11,8 @@ export default function CoreServiceCard({
   imgLeft = true, 
   widthRatio = 'two-thirds-one-third' // 默认使用 'two-thirds-one-third'
 }) {
-  // console.log('CoreServiceCard', imageSrc);
-  
+  const t = useTranslations(); // Hook to get translations
+
   // 宽度比例映射
   const widthMapping = {
     'half-half': {
@@ -46,10 +47,10 @@ export default function CoreServiceCard({
             </p>
             <p className="flex justify-start w-full mt-8">
               <Link
-                href={`/services/services-for-businesses`}
+                href={`#`}
                 className="bg-button-green dark:hover:bg-[#C0CFB2] dark:hover:text-[#151515] text-[#F5F7EE] dark:text-[#C0CFB2] px-8 py-3 rounded-full hover:bg-button-hover transition duration-300 flex items-center justify-center"
               >
-                Learn more
+                {t('learnMore')} {/* Use translated text here */}
               </Link>
             </p>
           </CardContent>

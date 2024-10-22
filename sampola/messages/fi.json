@@ -1,23 +1,6 @@
 {
-  "Navbar": {
-    "home": "Etusivu",
-    "services": "Palvelut",
-    "shop": "Kauppa",
-    "contact": "Ota yhteyttä",
-    "about": "Meistä",
-    "services_consumer": "Kuluttajapalvelut",
-    "services_business": "Yrityspalvelut",
-    "services_government": "Julkishallinnon palvelut",
-    "wellbeing_services": "Hyvinvointipalvelut",
-    "handmade_products": "Käsintehdyt tuotteet",
-    "sustainable_products": "Kestävät tuotteet",
-    "collaborative_products": "Yhteistyötuotteet",
-    "partners": "Yhteistyökumppanit",
-    "blog_news": "Blogi & Uutiset",
-    "latest_projects": "Viimeisimmät projektit",
-    "success_stories": "Menestystarinat",
-    "history_mission": "Historia & Tehtävä",
-    "our_team": "Meidän tiimi",
-    "values": "Meidän arvot"
-  }
+  "services-for-customers":{
+    "Categories":"Kategoriat"
+  },
+  "learnMore": "Lue lisää"
 }

@@ -10,6 +10,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'dummyimage.com' },
       { protocol: 'http', hostname: 'localhost' },
       { protocol: 'http', hostname: '127.0.0.1' },
+      { protocol: 'http', hostname: '100.87.76.4' },
     ],
   }
 };

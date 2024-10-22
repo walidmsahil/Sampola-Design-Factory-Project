@@ -4,7 +4,8 @@
   "info": {
     "singularName": "contact-page",
     "pluralName": "contact-pages",
-    "displayName": "ContactPage"
+    "displayName": "ContactPage",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,6 +20,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::hero-section.hero-section"
+    },
+    "service_infos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-info.service-info"
     }
   }
 }

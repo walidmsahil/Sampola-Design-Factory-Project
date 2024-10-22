@@ -1,21 +1,24 @@
 import { Separator } from "@/components/ui/Separator";
-import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
-import { Button } from "@/components/ui/button"
 import { getServicesForCustomersPageData } from '@/lib/api';
 import CoreServiceCard from '@/components/CoreServiceCard'
+import parse from 'html-react-parser';
+import { getTranslations } from 'next-intl/server';
+
 export default async function ServicesForCustomers({ params }) {
   const { locale } = params;
 
   // Fetch data directly in the server component
   const ServicesForCustomersPageData = await getServicesForCustomersPageData(locale);
   // console.log('ServicesForCustomersPageData', JSON.stringify(ServicesForCustomersPageData));
+  const t = await getTranslations('services-for-customers', locale); // Fetch translations on the server
 
   const {
     heroSection,
     servicesSections,
+    service_infos
   } = ServicesForCustomersPageData;
-
+ // 使用 useTranslations 钩子来获取翻译
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -27,38 +30,30 @@ export default async function ServicesForCustomers({ params }) {
         backgroundImage={heroSection.backgroundImage}
       />
       <div className="container mx-auto px-4">
-        {/* Upholstery and restoration section */}
-        <div className="my-8 p-6   rounded-lg transition-colors duration-300">
-          <h2 className="text-4xl font-bold text-primary dark:text-[#C0CFB2]">Upholstery and restoration</h2>
-          <p className="mt-4">
-            Our services include furniture upholstery and restoration as well as various surface treatment works.
-            We also sell high-quality upholstery fabrics and various upholstery accessories. Through the online store you can buy e.g. sea ​​grass, saddle belt and jute fabric.
-          </p>
-          <p className="mt-2">
-            More information about the services of the curtain walling and restoration department:
-          </p>
-          <p>
-            Responsible job coach Kimmo Uschanoff <br />
-            tel. 050 375 0051 <br />
-            kimmo.uschanoff@kpsaatio.fi
-          </p>
+      {/* Services Info Section */}
+      <div className="my-8">
+          {service_infos.data.map((info) => (
+            <div key={info.id} className="mb-8 p-6 rounded-lg transition-colors duration-300">
+              <h2 className="text-4xl font-bold text-primary dark:text-[#C0CFB2]">
+                {info.attributes.title}
+              </h2>
+              <div className="mt-4 text-[16px] lg:text-[20px]">
+                {/* Render the markdown content using html-react-parser */}
+                {parse(info.attributes.markdown)}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="flex w-full justify-center">
           <Separator className="my-4 h-[1px] w-[100%] bg-primary dark:bg-[#C0CFB2]  transition-colors duration-300" />
         </div>
 
-        {/* Workshop Shop Sampola */}
-        <div className="my-8 p-6   rounded-lg transition-colors duration-300">
-          <h2 className="text-4xl font-bold text-primary dark:text-[#C0CFB2]">Workshop shop Sampola</h2>
-          <p className="mt-4">
-            You can buy high-quality domestic handicrafts from Sampola's online store.
-          </p>
-        </div>
+
 
         {/* Categories Section */}
         <div className="my-8 rounded-lg transition-colors duration-300">
-          <h2 className="text-4xl ml-6 font-bold text-primary dark:text-[#C0CFB2]">Categories</h2>
+          <h2 className="text-4xl ml-6 font-bold text-primary dark:text-[#C0CFB2]">{t('Categories')}</h2>
 
           <section className="mb-16">
             {servicesSections.map((service, index) => (
@@ -86,3 +81,5 @@ export default async function ServicesForCustomers({ params }) {
     </div>
   );
 }
+
+

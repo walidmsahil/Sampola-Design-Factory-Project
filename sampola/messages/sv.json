@@ -1,23 +1,6 @@
 {
-  "Navbar": {
-    "home": "Hem",
-    "services": "Tjänster",
-    "shop": "Butik",
-    "contact": "Kontakta oss",
-    "about": "Om oss",
-    "services_consumer": "Konsumenttjänster",
-    "services_business": "Företagstjänster",
-    "services_government": "Offentliga tjänster",
-    "wellbeing_services": "Välmående tjänster",
-    "handmade_products": "Handgjorda produkter",
-    "sustainable_products": "Hållbara produkter",
-    "collaborative_products": "Samarbetsprodukter",
-    "partners": "Partners",
-    "blog_news": "Blogg & Nyheter",
-    "latest_projects": "Senaste projekten",
-    "success_stories": "Framgångshistorier",
-    "history_mission": "Historia & Mission",
-    "our_team": "Vårt team",
-    "values": "Våra värderingar"
-  }
+  "services-for-customers":{
+    "Categories":"Kategorier"
+  },
+  "learnMore": "Läs mer"
 }

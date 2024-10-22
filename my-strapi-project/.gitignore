@@ -61,7 +61,6 @@ $RECYCLE.BIN/
 # Logs and databases
 ############################
 
-.tmp
 *.log
 # *.sql
 # !.github/workflows/db/**/*.sql
