@@ -1,23 +1,6 @@
 {
-  "Navbar": {
-    "home": "Home",
-    "services": "Services",
-    "shop": "Shop",
-    "contact": "Contact Us",
-    "about": "About Us",
-    "services_consumer": "Consumer Services",
-    "services_business": "Business Services",
-    "services_government": "Government Services",
-    "wellbeing_services": "Well-being Services",
-    "handmade_products": "Handmade Products",
-    "sustainable_products": "Sustainable Products",
-    "collaborative_products": "Collaborative Products",
-    "partners": "Partners",
-    "blog_news": "Blog & News",
-    "latest_projects": "Latest Projects",
-    "success_stories": "Success Stories",
-    "history_mission": "History & Mission",
-    "our_team": "Our Team",
-    "values": "Our Values"
-  }
+  "services-for-customers":{
+    "Categories":"Categories"
+  },
+  "learnMore": "Learn more"
 }

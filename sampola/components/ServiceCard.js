@@ -6,7 +6,7 @@ export default function ServiceCard({
   description,
   imageSrc,
   imageAlt = "Service Image",
-  buttonLabel = "Learn more",
+  buttonText = "Learn more",
   buttonLink = "#",
 }) {
   return (
@@ -32,7 +32,7 @@ export default function ServiceCard({
           {description}
         </p>
         <Link href={buttonLink} className="bg-[#617968] dark:hover:bg-[#242423] dark:hover:text-[#C0CFB2] text-[#F5F7EE] dark:bg-[#C0CFB2] dark:text-[#151515] px-4 py-2 md:px-6 md:py-2 rounded-full hover:bg-[#AABB99] transition duration-300 cursor-pointer">
-          {buttonLabel}
+          {buttonText}
         </Link>
       </div>
 

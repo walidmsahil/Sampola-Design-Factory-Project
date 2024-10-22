@@ -30,6 +30,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::services-section.services-section"
+    },
+    "service_infos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-info.service-info"
     }
   }
 }

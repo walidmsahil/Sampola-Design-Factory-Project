@@ -22,7 +22,7 @@ const SearchBar = () => {
           placeholder=""
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full lg:p-2 lg:pr-9 p-1 bg-[#f3f2e9] dark:bg-[#C0CFB2] text-[#151515] placeholder-[#f3f2e9] outline-none border-none rounded-lg px-6 pr-8"
+          className="w-full lg:py-2 p-1 bg-[#f3f2e9] dark:bg-[#C0CFB2] text-[#151515] placeholder-[#f3f2e9] outline-none border-none rounded-lg px-6 pr-8 "
         />
         <button
           type="submit"

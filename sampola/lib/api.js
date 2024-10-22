@@ -91,7 +91,7 @@ export async function getData(locale) {
 // 获取 home-page 数据的 API 函数
 export async function getHomePageData(locale) {
   try {
-    const res = await apiClient.get(`http://localhost:1337/api/home-page?locale=${locale}&populate[hero_section][populate]=*&populate[services_sections]=*&populate[core_service_sections][populate]=*&populate=video`);
+    const res = await apiClient.get(`/api/home-page?locale=${locale}&populate[hero_section][populate]=*&populate[services_sections]=*&populate[core_service_sections][populate]=*&populate=video`);
     const data = res.data.data?.attributes || {};
     // console.log(JSON.stringify(data));
 
@@ -130,7 +130,7 @@ export async function getHomePageData(locale) {
 
 export async function getServicesForMunicipalSectorPageData(locale) {
   try {
-    const res = await apiClient.get(`http://localhost:1337/api/services-for-municipal-sector-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
+    const res = await apiClient.get(`/api/services-for-municipal-sector-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
     const data = res.data.data?.attributes || {};
 
     // 解构 hero_section 数据
@@ -178,7 +178,7 @@ export async function getServicesForMunicipalSectorPageData(locale) {
 
 export async function getServicesForBusinessesPageData(locale) {
   try {
-    const res = await apiClient.get(`http://localhost:1337/api/services-for-businesses-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
+    const res = await apiClient.get(`/api/services-for-businesses-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
     const data = res.data.data?.attributes || {};
 
     // 解构 hero_section 数据
@@ -224,11 +224,12 @@ export async function getServicesForBusinessesPageData(locale) {
 
 export async function getContactPageData(locale) {
   try {
-    const res = await apiClient.get(`http://localhost:1337/api/contact-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
+    const res = await apiClient.get(`/api/contact-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&populate[service_infos][populate]=*&locale=${locale}`);
+
     const data = res.data.data?.attributes || {};
 
     // 解构 hero_section 数据
-    const { hero_section, services_sections } = data;
+    const { hero_section, services_sections,service_infos } = data;
 
     // 处理 hero_section 数据
     const heroSection = {
@@ -258,6 +259,7 @@ export async function getContactPageData(locale) {
     return {
       heroSection,
       servicesSections,
+      service_infos 
     };
   } catch (error) {
     console.error('Error fetching Services for Municipal Sector page data:', error);
@@ -269,11 +271,11 @@ export async function getContactPageData(locale) {
 }
 export async function getServicesForAboutPageData(locale) {
   try {
-    const res = await apiClient.get(`http://localhost:1337/api/about?populate[hero_section][populate]=*&populate[core-service-sections][populate]=image&locale=${locale}`);
+    const res = await apiClient.get(`/api/about?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&populate[faqs][populate]=*&locale=${locale}`);
     const data = res.data.data?.attributes || {};
 
     // 解构 hero_section 数据
-    const { hero_section, services_sections } = data;
+    const { hero_section, services_sections, faqs,btn_1,title_2,title_3 } = data;
 
     // 处理 hero_section 数据
     const heroSection = {
@@ -299,10 +301,20 @@ export async function getServicesForAboutPageData(locale) {
                  '/default-icon.jpg'}`,
     })) || [];
 
+     // 处理 faqs 数据
+     const faqsData = faqs?.data?.map((faq) => ({
+      question: faq?.attributes?.title || '',
+      answer: faq?.attributes?.description || '',
+    })) || [];
+
     // 返回整理后的数据
     return {
       heroSection,
       servicesSections,
+      faqs: faqsData,
+      btn_1,
+      title_2,
+      title_3
     };
   } catch (error) {
     console.error('Error fetching Services for Municipal Sector page data:', error);
@@ -316,11 +328,15 @@ export async function getServicesForAboutPageData(locale) {
 
 export async function getServicesForCustomersPageData(locale) {
   try {
-    const res = await apiClient.get(`http://localhost:1337/api/services-for-customers-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
+    // const res = await apiClient.get(`/api/services-for-customers-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&locale=${locale}`);
+    const res = await apiClient.get(
+      `/api/services-for-customers-page?populate[hero_section][populate]=*&populate[services_sections][populate]=icon_img&populate[service_infos][populate]=*&locale=${locale}`
+    );
+    
     const data = res.data.data?.attributes || {};
 
     // 解构 hero_section 数据
-    const { hero_section, services_sections } = data;
+    const { hero_section, services_sections,service_infos } = data;
 
     // 处理 hero_section 数据
     const heroSection = {
@@ -350,6 +366,7 @@ export async function getServicesForCustomersPageData(locale) {
     return {
       heroSection,
       servicesSections,
+      service_infos
     };
   } catch (error) {
     console.error('Error fetching Services for Municipal Sector page data:', error);
@@ -371,6 +388,24 @@ export async function getCoreServiceSectionsData(locale) {
     return res.data.data;
   } catch (error) {
     console.error('Error fetching core service sections data:', error);
+    return [];
+  }
+}
+
+export async function getAboutTabsData(locale) {
+  try {
+    // 调用 about_tabs API，获取指定语言和图片填充的数据
+    const res = await apiClient.get(`/api/about-tabs?populate=imgs&locale=${locale}`);
+    
+    // 返回 about_tabs 数据
+    return res.data.data.map((tab) => ({
+      title: tab?.attributes?.title || '',
+      subTitle: tab?.attributes?.sub_title || '',
+      description: tab?.attributes?.description || '',
+      images: tab?.attributes?.imgs?.data?.map((img) => `${process.env.NEXT_PUBLIC_API_URL}${img?.attributes?.url}`) || ['/default-image.jpg'], // 处理多张图片
+    }));
+  } catch (error) {
+    console.error('Error fetching about tabs data:', error);
     return [];
   }
 }

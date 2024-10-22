@@ -1,12 +1,17 @@
-import { Separator } from "@/components/ui/Separator"
+import { Separator } from "@/components/ui/Separator";
 import Link from 'next/link';
-export default function Footer({locale}) {
-  console.log('locale:', locale);
-  
+
+export default function Footer({ locale, menuItems }) {
+  // console.log('locale:', locale);
+  // console.log('menuItems:', JSON.stringify(menuItems, null, 2));
+
+  // 将前两个项目挪到第二列
+  const firstColumnItems = menuItems.slice(3);
+  const secondColumnItems = menuItems.slice(0, 3);
   return (
-    <footer className=" py-12 px-4">
+    <footer className="py-12 px-4">
       <div className="flex w-full justify-center">
-        <Separator className="mb-20 h-[2px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2] " />
+        <Separator className="mb-20 h-[2px] w-[95%] bg-primary justify-center dark:bg-[#C0CFB2]" />
       </div>
       <div className="container mx-auto flex flex-wrap justify-between px-6 md:px-12">
         <div className="w-full md:w-1/4 mb-6 md:mb-0 order-4 md:order-1">
@@ -45,51 +50,73 @@ export default function Footer({locale}) {
             </a>
           </div>
         </div>
-
-        <div className="w-full md:w-1/4 mb-6 md:mb-0 order-2">
-        <ul className="space-y-2">
-            <li>
-              <Link href="/" locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/services/services-for-customers`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
-                Services for customers
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/services/services-for-businesses`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
-                Services for businesses
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/services/services-for-municipal-sector`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
-                Services for municipal sector
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/contact`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {/* 第一列 */}
         <div className="w-full md:w-1/4 mb-6 md:mb-0 order-3">
           <ul className="space-y-2">
-            <li>
-              <Link href={`/${locale}/about`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
-                About us
-              </Link>
-            </li>
-            <li>
-              <Link href={`/${locale}/shop`} locale={locale} className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]">
-                Webshop
-              </Link>
-            </li>
+            {firstColumnItems.map((item, index) => (
+              <li key={index}>
+                {item.dropdownItems && item.dropdownItems.length > 0 ? (
+                  <ul className="space-y-2">
+                    {item.dropdownItems.map((subItem, subIndex) => (
+                      <li key={subIndex}>
+                        <Link
+                          href={subItem.href}
+                          locale={locale}
+                          className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]"
+                        >
+                          {subItem.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <Link
+                    href={item.href}
+                    locale={locale}
+                    className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]"
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </li>
+            ))}
           </ul>
         </div>
-        <div className=" md:w-auto flex items-end justify-end order-4">
+
+        {/* 第二列 */}
+        <div className="w-full md:w-1/4 mb-6 md:mb-0 order-2">
+          <ul className="space-y-2">
+            {secondColumnItems.map((item, index) => (
+              <li key={index}>
+                {item.dropdownItems && item.dropdownItems.length > 0 ? (
+                  <ul className="space-y-2">
+                    {item.dropdownItems.map((subItem, subIndex) => (
+                      <li key={subIndex}>
+                        <Link
+                          href={subItem.href}
+                          locale={locale}
+                          className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]"
+                        >
+                          {subItem.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <Link
+                    href={item.href}
+                    locale={locale}
+                    className="text-primary hover:text-[#AABB99] dark:text-[#ffffff] dark:hover:text-[#C0CFB2]"
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="md:w-auto flex items-end justify-end order-4">
           <div
             className="w-[200px] h-[60px] bg-contain bg-no-repeat"
             style={{ backgroundImage: 'var(--footer-logo-url)' }}
@@ -98,5 +125,8 @@ export default function Footer({locale}) {
         </div>
       </div>
     </footer>
-  )
+  );
 }
+
+
+

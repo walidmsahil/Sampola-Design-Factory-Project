@@ -1,8 +1,8 @@
 "use client";
-
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import SearchBar from '../SearchBar';
 import { useState } from 'react';
 import { Separator } from "@/components/ui/Separator"
@@ -90,6 +90,19 @@ const MobileNavbar = ({ menuItems, mobileMenuOpen, setMobileMenuOpen }) => {
   const currentLocale = params.locale;
   const [currentMenu, setCurrentMenu] = useState('main'); // 控制当前导航级别
 
+  // 禁用滚动
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    // 组件卸载时恢复滚动
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [mobileMenuOpen]);
+
   const handleMenuClick = (item) => {
     if (item.dropdownItems) {
       setCurrentMenu(item.label); // 只有有子菜单时才切换到子菜单
@@ -132,25 +145,32 @@ const MobileNavbar = ({ menuItems, mobileMenuOpen, setMobileMenuOpen }) => {
         {/* 一级导航 */}
         {menuItems.map((item, index) => (
           <div
-            key={index}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 50, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 100 }}
-          >
-            {item.dropdownItems.length > 0 ? (
-              <button
-                className="text-xl text-[#C0CFB2] p-2 rounded-full w-full text-left mb-3"
-                onClick={() => handleMenuClick(item)}
-              >
-                {item.label}
-              </button>
-            ) : (
-              <Link href={item.href} className="text-xl block text-[#C0CFB2] p-2 rounded-full w-full text-left mb-3" onClick={() => setMobileMenuOpen(false)}>
-                {item.label}
-              </Link>
-            )}
-          </div>
+          key={index}
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 50, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 100 }}
+        >
+          {item.dropdownItems.length > 0 ? (
+            <button
+              className="text-xl text-[#C0CFB2] p-2 rounded-full w-full text-left mb-3 flex justify-between items-center"
+              onClick={() => handleMenuClick(item)}
+            >
+              {item.label}
+              <ArrowRight className="w-8 h-8 text-[#C0CFB2]" strokeWidth={1} />
+            </button>
+          ) : (
+            <Link 
+              href={item.href} 
+              className="text-xl block text-[#C0CFB2] p-2 rounded-full w-full text-left mb-3 flex justify-between items-center" 
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {item.label}
+              <ArrowRight className="w-8 h-8 text-[#C0CFB2]" strokeWidth={1} />
+            </Link>
+          )}
+        </div>
+        
         ))}
 
         {/* 二级导航 */}

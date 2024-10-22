@@ -42,7 +42,7 @@ export default async function Home({ params }) {
             <video
               src={video}
               controls
-              autoPlay
+              autoPlay={false}
               loop
               muted
               className="w-full h-full object-cover object-center"

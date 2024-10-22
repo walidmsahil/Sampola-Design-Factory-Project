@@ -799,8 +799,18 @@ export interface ApiAboutAbout extends Schema.SingleType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    Title: Attribute.String;
+    Title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     core_service_sections: Attribute.Relation<
       'api::about.about',
       'oneToMany',
@@ -810,6 +820,35 @@ export interface ApiAboutAbout extends Schema.SingleType {
       'api::about.about',
       'oneToOne',
       'api::hero-section.hero-section'
+    >;
+    services_sections: Attribute.Relation<
+      'api::about.about',
+      'oneToMany',
+      'api::services-section.services-section'
+    >;
+    faqs: Attribute.Relation<'api::about.about', 'oneToMany', 'api::faq.faq'>;
+    title_3: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title_2: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    btn_1: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    about_tabs: Attribute.Relation<
+      'api::about.about',
+      'oneToMany',
+      'api::about-tab.about-tab'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -826,6 +865,76 @@ export interface ApiAboutAbout extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::about.about',
+      'oneToMany',
+      'api::about.about'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiAboutTabAboutTab extends Schema.CollectionType {
+  collectionName: 'about_tabs';
+  info: {
+    singularName: 'about-tab';
+    pluralName: 'about-tabs';
+    displayName: 'about_tab';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    sub_title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    imgs: Attribute.Media<'images', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-tab.about-tab',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about-tab.about-tab',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::about-tab.about-tab',
+      'oneToMany',
+      'api::about-tab.about-tab'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -906,6 +1015,7 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
     singularName: 'contact-page';
     pluralName: 'contact-pages';
     displayName: 'ContactPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -920,6 +1030,11 @@ export interface ApiContactPageContactPage extends Schema.SingleType {
       'api::contact-page.contact-page',
       'oneToOne',
       'api::hero-section.hero-section'
+    >;
+    service_infos: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToMany',
+      'api::service-info.service-info'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1007,6 +1122,50 @@ export interface ApiCoreServiceSectionCoreServiceSection
       'api::core-service-section.core-service-section',
       'oneToMany',
       'api::core-service-section.core-service-section'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiFaqFaq extends Schema.CollectionType {
+  collectionName: 'faqs';
+  info: {
+    singularName: 'faq';
+    pluralName: 'faqs';
+    displayName: 'FAQ';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::faq.faq',
+      'oneToMany',
+      'api::faq.faq'
     >;
     locale: Attribute.String;
   };
@@ -1300,6 +1459,59 @@ export interface ApiNavigationNavigation extends Schema.CollectionType {
   };
 }
 
+export interface ApiServiceInfoServiceInfo extends Schema.CollectionType {
+  collectionName: 'service_infos';
+  info: {
+    singularName: 'service-info';
+    pluralName: 'service-infos';
+    displayName: 'ServiceInfo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    markdown: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service-info.service-info',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service-info.service-info',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::service-info.service-info',
+      'oneToMany',
+      'api::service-info.service-info'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiServicesForBusinessesPageServicesForBusinessesPage
   extends Schema.SingleType {
   collectionName: 'services_for_businesses_pages';
@@ -1384,6 +1596,11 @@ export interface ApiServicesForCustomersPageServicesForCustomersPage
       'api::services-for-customers-page.services-for-customers-page',
       'oneToMany',
       'api::services-section.services-section'
+    >;
+    service_infos: Attribute.Relation<
+      'api::services-for-customers-page.services-for-customers-page',
+      'oneToMany',
+      'api::service-info.service-info'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1561,30 +1778,6 @@ export interface ApiServicesSectionServicesSection
   };
 }
 
-export interface ApiTestTest extends Schema.CollectionType {
-  collectionName: 'tests';
-  info: {
-    singularName: 'test';
-    pluralName: 'tests';
-    displayName: 'test';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    test: Attribute.Blocks;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1604,18 +1797,20 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
+      'api::about-tab.about-tab': ApiAboutTabAboutTab;
       'api::contact-information.contact-information': ApiContactInformationContactInformation;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::core-service-section.core-service-section': ApiCoreServiceSectionCoreServiceSection;
+      'api::faq.faq': ApiFaqFaq;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::main-image-section.main-image-section': ApiMainImageSectionMainImageSection;
       'api::navigation.navigation': ApiNavigationNavigation;
+      'api::service-info.service-info': ApiServiceInfoServiceInfo;
       'api::services-for-businesses-page.services-for-businesses-page': ApiServicesForBusinessesPageServicesForBusinessesPage;
       'api::services-for-customers-page.services-for-customers-page': ApiServicesForCustomersPageServicesForCustomersPage;
       'api::services-for-municipal-sector-page.services-for-municipal-sector-page': ApiServicesForMunicipalSectorPageServicesForMunicipalSectorPage;
       'api::services-section.services-section': ApiServicesSectionServicesSection;
-      'api::test.test': ApiTestTest;
     }
   }
 }

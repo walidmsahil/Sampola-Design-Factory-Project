@@ -10,10 +10,19 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "Title": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "core_service_sections": {
       "type": "relation",
@@ -24,6 +33,45 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::hero-section.hero-section"
+    },
+    "services_sections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::services-section.services-section"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq.faq"
+    },
+    "title_3": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "title_2": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "btn_1": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
+    },
+    "about_tabs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::about-tab.about-tab"
     }
   }
 }
