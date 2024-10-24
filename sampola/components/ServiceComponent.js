@@ -36,7 +36,7 @@ export default function Component({ services = [], ctaText="Learn more" }) {
             description={services[0]?.description || 'No description available'}
             icon={<Users className="h-8 w-8 text-primary" />}
             ctaText={ctaText || 'Learn more'}
-            link={`${pathname}/services/services-for-businesses`}
+            link={`${pathname}${services[0].ctaButtonLink}`}
           />
         )}
         {services.length > 1 && (
@@ -45,7 +45,7 @@ export default function Component({ services = [], ctaText="Learn more" }) {
             description={services[1]?.description || 'No description available'}
             icon={<Building className="h-8 w-8 text-primary" />}
             ctaText={ctaText || 'Learn more'}
-            link={`${pathname}/services/services-for-municipal-sector`}
+            link={`${pathname}${services[1].ctaButtonLink}`}
           />
         )}
         {services.length > 2 && (
@@ -54,7 +54,7 @@ export default function Component({ services = [], ctaText="Learn more" }) {
             description={services[2]?.description || 'No description available'}
             icon={<Landmark className="h-8 w-8 text-primary" />}
             ctaText={ctaText || 'Learn more'}
-            link={`${pathname}/services/services-for-customers`}
+            link={`${pathname}${services[2].ctaButtonLink}`}
           />
         )}
       </div>
